@@ -25,6 +25,7 @@ body {
   width: 150px;
   height: 80px;
   z-index: 2;
+  transform: scale(1.5); /* Phóng to xe tăng */
   animation: moveTank 10s linear infinite;
 }
 
@@ -36,7 +37,8 @@ body {
 .tank-body {
   width: 120px;
   height: 50px;
-  background: #4b5320;
+  background-color: #8b4513; /* Màu xanh quân đội */
+  border: 2px solid #5a2e1a; /* Viền đậm hơn */
   position: relative;
   border-radius: 5px;
 }
@@ -44,7 +46,8 @@ body {
 .tank-turret {
   width: 60px;
   height: 20px;
-  background: #4b5320;
+  background-color: #a0522d; /* Màu xanh nhạt hơn */
+  border: 2px solid #6a3a1e;
   position: absolute;
   top: -10px;
   left: 30px;
@@ -54,7 +57,7 @@ body {
 .tank-barrel {
   width: 40px;
   height: 5px;
-  background: #333;
+  background-color: #5a2e1a; /* Màu xanh đậm */
   position: absolute;
   top: 7.5px;
   left: 60px;
@@ -89,9 +92,9 @@ body {
 .wheel {
   width: 20px;
   height: 20px;
-  background: #333;
+  background-color: #2f2f2f; /* Màu đen cho bánh xe */
+  border: 2px solid #1c1c1c;
   border-radius: 50%;
-  border: 2px solid #fff;
   /* Viền trắng để bánh xe nổi bật */
   position: relative;
   animation: rotateWheel 1s linear infinite;
