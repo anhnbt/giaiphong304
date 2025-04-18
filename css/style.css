@@ -19,52 +19,73 @@ body {
 
 /* Xe tăng */
 .tank {
-  position: absolute;
-  bottom: 50px;
-  left: -200px;
-  width: 150px;
-  height: 80px;
+  position: absolute; /* Đặt vị trí tuyệt đối để có thể di chuyển */
+  left: 0; /* Vị trí ban đầu */
+  bottom: 0; /* Cách đáy màn hình */
+  width: 300px; /* Kích thước xe tăng */
+  height: auto;
   z-index: 2;
-  transform: scale(1.5); /* Phóng to xe tăng */
-  animation: moveTank 10s linear infinite;
 }
 
-.tank.paused {
-  animation-play-state: paused;
-  /* Tạm dừng animation */
+.tank-image {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.tank-body {
-  width: 120px;
-  height: 50px;
-  background-color: #8b4513; /* Màu xanh quân đội */
-  border: 2px solid #5a2e1a; /* Viền đậm hơn */
-  position: relative;
-  border-radius: 5px;
-}
-
-.tank-turret {
-  width: 60px;
-  height: 20px;
-  background-color: #a0522d; /* Màu xanh nhạt hơn */
-  border: 2px solid #6a3a1e;
+/* Cổng Dinh Độc Lập */
+.gate {
   position: absolute;
-  top: -10px;
-  left: 30px;
-  border-radius: 3px;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 150px;
+  z-index: 2;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 }
 
-.tank-barrel {
-  width: 40px;
-  height: 5px;
-  background-color: #5a2e1a; /* Màu xanh đậm */
+/* Hiệu ứng cổng bị húc đổ */
+.gate.destroyed {
+  transform: translateX(-50%) rotate(90deg); /* Xoay cổng */
+  opacity: 0; /* Làm mờ dần */
+}
+
+/* Đứa bé */
+.child {
   position: absolute;
-  top: 7.5px;
-  left: 60px;
+  width: 150px;
+  height: 150px;
+  background: url('../images/child.png') no-repeat center center;
+  background-size: contain;
+  animation: riseUp 3s ease-out forwards, waveHand 1s ease-in-out infinite;
+  z-index: 1;
 }
 
-.tank-barrel.shoot {
-  animation: shootEffect 0.5s ease-out;
+/* Hiệu ứng nổi lên từ 50px đến 66px */
+@keyframes riseUp {
+  0% {
+    bottom: 50px; /* Vị trí ban đầu */
+    opacity: 0; /* Bắt đầu ẩn */
+  }
+  50% {
+    opacity: 1; /* Hiện dần */
+  }
+  100% {
+    bottom: 99px; /* Vị trí cuối cùng */
+    opacity: 1;
+  }
+}
+
+/* Hiệu ứng vẫy tay */
+@keyframes waveHand {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
 }
 
 @keyframes shootEffect {
@@ -81,7 +102,7 @@ body {
   }
 }
 
-.tank-wheels {
+/* .tank-wheels {
   display: flex;
   justify-content: space-between;
   position: absolute;
@@ -92,13 +113,11 @@ body {
 .wheel {
   width: 20px;
   height: 20px;
-  background-color: #2f2f2f; /* Màu đen cho bánh xe */
+  background-color: #2f2f2f;
   border: 2px solid #1c1c1c;
   border-radius: 50%;
-  /* Viền trắng để bánh xe nổi bật */
   position: relative;
   animation: rotateWheel 1s linear infinite;
-  /* Tăng thời gian để đồng bộ */
 }
 
 .wheel::before {
@@ -110,7 +129,7 @@ body {
   height: 10px;
   background: #fff;
   transform: translate(-50%, -50%);
-}
+} */
 
 /* Đường */
 .road {

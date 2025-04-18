@@ -1,56 +1,89 @@
 document.addEventListener('DOMContentLoaded', () => {
   const tank = document.querySelector('.tank');
-  const barrel = document.querySelector('.tank-barrel');
-  const shootSound = new Audio('sounds/shoot.mp3'); // Đường dẫn đến tệp âm thanh
+  const screenWidth = window.innerWidth;
+  const TANK_X_POSITION = screenWidth / 2; // Vị trí giữa màn hình (điều chỉnh theo kích thước xe tăng)
+  const tankSpeed = 2; // Tốc độ di chuyển của xe tăng (px/frame)
+  let tankPosition = 0; // Vị trí hiện tại của xe tăng (px)
   let shootCount = 0; // Biến đếm số lần bắn
   const maxShots = 3; // Số lần bắn tối đa
   let hasShot = false; // Trạng thái để kiểm tra xem đã bắn trong vòng lặp này chưa
+  let gateDestroyed = false; // Trạng thái cổng bị húc đổ
 
-  function checkTankPosition() {
+  function showMemeText() {
+    const memeText = document.createElement('div');
+    memeText.textContent = 'Húc đổ cổng rồi!';
+    memeText.style.position = 'absolute';
+    memeText.style.bottom = '20%'; // Đặt cao hơn để nằm trên đứa bé
+    memeText.style.left = '50%';
+    memeText.style.transform = 'translate(-50%, -50%)';
+    memeText.style.color = '#FFD700';
+    memeText.style.fontSize = '24px';
+    memeText.style.fontWeight = 'bold';
+    memeText.style.textShadow = '2px 2px 2px #000';
+    document.body.appendChild(memeText);
+
+    setTimeout(() => {
+      memeText.remove();
+    }, 3000); // Hiển thị trong 3 giây
+  }
+
+  function showChildEffect() {
+    const child = document.createElement('div');
+    child.classList.add('child'); // Thêm class để áp dụng CSS
+    document.body.appendChild(child);
+
+    child.style.left = `${TANK_X_POSITION - 150 / 2}px`; // Đồng bộ vị trí x với xe tăng
+  }
+
+  function updateTank() {
     const tankRect = tank.getBoundingClientRect();
-    const screenWidth = window.innerWidth;
+    if (tankPosition < TANK_X_POSITION - tankRect.width / 2) {
+      tankPosition += tankSpeed;
+      tank.style.left = `${tankPosition}px`;
+    }
+    // Kiểm tra va chạm với cổng
+    const gate = document.querySelector('.gate');
+    const gateRect = gate.getBoundingClientRect();
 
-    // Kiểm tra nếu chưa đạt số lần bắn tối đa và xe tăng ở giữa màn hình
+    if (
+      tankRect.right >= gateRect.left &&
+      tankRect.left <= gateRect.right &&
+      tankRect.bottom >= gateRect.top &&
+      !gateDestroyed
+    ) {
+      gate.classList.add('destroyed');
+      gateDestroyed = true;
+    }
+
+    // Kiểm tra điều kiện bắn
     if (
       shootCount < maxShots &&
       !hasShot &&
-      tankRect.left + tankRect.width / 2 >= screenWidth / 2
+      tankPosition >= TANK_X_POSITION - tankRect.width / 2
     ) {
-      // Tạm dừng xe tăng
-      tank.classList.add('paused');
-
-      // Hiệu ứng bắn
-      barrel.classList.add('shoot');
-      shootSound.play(); // Phát âm thanh bắn
-
-      // Kích hoạt hiệu ứng confetti
+      showChildEffect();
+      showMemeText();
       confetti({
         particleCount: 100,
         spread: 70,
-        origin: { x: 0.5, y: 0.5 }, // Vị trí giữa màn hình
-        colors: ['#FF0000', '#FFD700', '#FFFFFF'], // Màu sắc phù hợp với chủ đề 30/04
+        origin: { x: 0.5, y: 0.5 },
+        colors: ['#FF0000', '#FFD700', '#FFFFFF'],
       });
-
-      // Tăng số lần bắn
       shootCount++;
-      hasShot = true; // Đánh dấu đã bắn
+      hasShot = true;
 
-      // Sau 1 giây (thời gian bắn), tiếp tục di chuyển
       setTimeout(() => {
-        barrel.classList.remove('shoot'); // Reset hiệu ứng bắn
-        tank.classList.remove('paused'); // Tiếp tục di chuyển
-        hasShot = false; // Cho phép bắn lần tiếp theo
+        hasShot = false;
       }, 1000);
     }
 
-    // Tiếp tục kiểm tra vị trí
-    if (shootCount < maxShots) {
-      requestAnimationFrame(checkTankPosition);
+    // Tiếp tục cập nhật nếu chưa đạt số lần bắn tối đa
+    if (tankPosition < TANK_X_POSITION - tankRect.width / 2 || !gateDestroyed) {
+      requestAnimationFrame(updateTank);
     }
   }
 
-  // Bắt đầu kiểm tra vị trí
-  requestAnimationFrame(checkTankPosition);
+  updateTank(); // Bắt đầu cập nhật xe tăng
 
   const quoteElement = document.querySelector('.quote');
   const quotes = [
