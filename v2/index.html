@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giải Phóng Miền Nam 30/04</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(45deg, #ff0000, #ffcc00);
+      background-size: 200% 200%;
+      animation: gradientMove 10s ease infinite;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3.5em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      animation: pulseText 2s infinite;
+      position: relative;
+      z-index: 10;
+    }
+
+    .flag-falling {
+      width: 30px;
+      position: absolute;
+      z-index: 4;
+      animation: fallFlag 5s linear infinite;
+    }
+
+    .firework {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: yellow;
+      border-radius: 50%;
+      animation: explode 1.5s infinite;
+      box-shadow: 0 0 10px yellow;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes pulseText {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes fallFlag {
+      0% {
+        top: -50px;
+        transform: rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        top: 100vh;
+        transform: rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 2s infinite;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.2;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Khung hiệu ứng */
+    .bloom-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: bloomEffect 6s ease-in-out infinite;
+      padding: 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Nhân vật */
+    .em-be {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      background-image: url('boy_with_flag.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: pulse 6s ease-in-out infinite;
+      z-index: 20;
+    }
+
+    /* Cánh hoa xoay */
+    .petal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.6), transparent);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: spin 10s linear infinite;
+    }
+
+    /* Mỗi cánh hoa một vị trí ban đầu */
+    .petal1 {
+      transform: rotate(0deg) translate(120px) rotate(0deg);
+    }
+
+    .petal2 {
+      transform: rotate(60deg) translate(120px) rotate(-60deg);
+    }
+
+    .petal3 {
+      transform: rotate(120deg) translate(120px) rotate(-120deg);
+    }
+
+    .petal4 {
+      transform: rotate(180deg) translate(120px) rotate(-180deg);
+    }
+
+    .petal5 {
+      transform: rotate(240deg) translate(120px) rotate(-240deg);
+    }
+
+    .petal6 {
+      transform: rotate(300deg) translate(120px) rotate(-300deg);
+    }
+
+    /* Animation xoay cánh hoa */
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg) translate(120px) rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg) translate(120px) rotate(-360deg);
+      }
+    }
+
+    /* Nở hoa */
+    @keyframes bloomEffect {
+
+      0%,
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      50% {
+        transform: translate(-50%, -50%) scale(1.2);
+      }
+    }
+
+    /* Nhịp nhẹ cho nhân vật */
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      50% {
+        transform: translate(-50%, -50%) scale(1.05);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>TỰ HÀO DÂN TỘC<br>ĐỘC LẬP TỰ DO</h1>
+    <div class="bloom-wrapper">
+      <div class="em-be"></div>
+      <div class="petal petal1"></div>
+      <div class="petal petal2"></div>
+      <div class="petal petal3"></div>
+      <div class="petal petal4"></div>
+      <div class="petal petal5"></div>
+      <div class="petal petal6"></div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    // Tạo lá cờ rơi
+    function createFallingFlag() {
+      let flag = document.createElement('img');
+      flag.src = 'flag.webp';
+      flag.className = 'flag-falling';
+      flag.style.left = Math.random() * window.innerWidth + 'px';
+      flag.style.top = '-50px';
+      flag.style.animationDuration = Math.random() * 3 + 3 + 's';
+      document.body.appendChild(flag);
+      setTimeout(() => flag.remove(), 5000);
+    }
+    setInterval(createFallingFlag, 500);
+
+    // Tạo pháo hoa
+    for (let i = 0; i < 8; i++) {
+      let firework = document.createElement('div');
+      firework.className = 'firework';
+      firework.style.left = Math.random() * window.innerWidth + 'px';
+      firework.style.top = Math.random() * window.innerHeight / 2 + 'px';
+      firework.style.animationDelay = Math.random() * 1.5 + 's';
+      firework.style.background = Math.random() > 0.5 ? 'yellow' : 'red';
+      document.body.appendChild(firework);
+    }
+
+    // Tạo ngôi sao lấp lánh
+    for (let i = 0; i < 20; i++) {
+      let star = document.createElement('div');
+      star.className = 'star';
+      star.style.width = Math.random() * 5 + 'px';
+      star.style.height = star.style.width;
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+      star.style.animationDelay = Math.random() * 2 + 's';
+      document.body.appendChild(star);
+    }
+
+    function launchFirework() {
+      confetti({
+        particleCount: 100, // Số lượng hạt
+        angle: 90,          // Góc bắn thẳng lên
+        spread: 70,         // Độ lan tỏa
+        startVelocity: 50,  // Tốc độ ban đầu
+        origin: { x: Math.random(), y: 1 }, // Xuất phát từ dưới màn hình
+        colors: ['#ff0000', '#ffcc00', '#00ff00', '#0000ff'], // Màu sắc
+      });
+    }
+
+    // Kích hoạt pháo hoa mỗi 2 giây
+    setInterval(launchFirework, 2000);
+  </script>
+</body>
+
+</html>
