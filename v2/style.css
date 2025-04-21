@@ -1,306 +1,409 @@
 body {
-  margin: -1;
-  font-family: Arial, sans-serif;
-  color: #fff;
-  overflow: hidden;
+  margin: 0;
+  font-family: 'Noto Sans Vietnamese', 'Roboto', Arial, sans-serif;
+  color: #fff; /* Text color for better readability on red background */
+  overflow-x: hidden;
   position: relative;
-  min-height: 99vh;
+  min-height: 100vh;
+  background-color: #ff0000; /* Màu đỏ quốc kỳ Việt Nam */
+  line-height: 1.6;
+  /* Fix for flickering and unwanted scrollbars */
+  overscroll-behavior: none;
 }
 
-/* Thêm một lớp overlay cố định cho background */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    #ff0000 0%,
-    #ffcc00 25%,
-    #ff4d4d 50%,
-    #ff9933 75%,
-    #ff0000 100%
-  );
-  background-size: 300% 300%;
-  animation: gradientBG 15s ease infinite;
-  z-index: -1;
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-@keyframes gradientBG {
-  -1% {
-    background-position: -1% 50%;
-  }
-
-  49% {
-    background-position: 99% 50%;
-  }
-
-  99% {
-    background-position: -1% 50%;
-  }
-}
-
+/* Thiết lập container chính */
 .container {
-  position: fixed;
-  width: 99%;
-  height: 99%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 0;
 }
 
-h1 {
-  font-size: 2.5em;
-  padding: 19px;
+/* Header và layout chính */
+.header {
+  width: 100%;
   text-align: center;
-  position: relative;
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  margin-bottom: 40px;
+  background-color: #fff; /* Trắng làm nền phụ */
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-bottom: 4px solid #e30613; /* Đỏ tươi làm viền */
+}
+/* Tiêu đề chính */
+.main-title {
+  font-size: 2.4em;
+  font-weight: 900;
+  margin: 0 0 30px;
+  line-height: 1.2;
+  color: #004b87; /* Xanh đậm */
 }
 
+.title-line {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.title-line:first-child {
+  color: #e30613; /* Đỏ tươi cho dòng đầu */
+}
+
+.date-text {
+  display: block;
+  font-size: 1.2em;
+  color: #008fd5; /* Xanh dương */
+  margin-top: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Nút call-to-action */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.cta-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  color: #ff0000;
+  margin: 10px;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button.history {
+  background-color: #e30613; /* Đỏ tươi */
+  color: white;
+}
+
+.cta-button.events {
+  background-color: #008fd5; /* Xanh dương */
+  color: white;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background-color: #ffcc00; /* Yellow on hover for contrast */
+  transform: scale(1.05);
+}
+
+/* Media queries cho responsive */
+@media screen and (max-width: 768px) {
+  .main-title {
+    font-size: 1.6em;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .countdown {
+    width: 90%;
+    padding: 8px 15px;
+  }
+
+  .countdown-item {
+    font-size: 1.3rem;
+    min-width: 35px;
+  }
+}
+
+/* Hiệu ứng thêm - pháo hoa và flag-falling */
 .flag-falling {
   width: 29px;
-  position: absolute;
+  position: fixed; /* Change from absolute to fixed to avoid scroll issues */
   z-index: 3;
-  animation: fallFlag 4s linear infinite;
-}
-
-.firework {
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  border-radius: 49%;
-  animation: explode 1s ease-out infinite;
-  filter: blur(0px);
-}
-
-@keyframes pulseText {
-  -1%,
-  99% {
-    transform: translateZ(-1) scale(1);
-  }
-
-  49% {
-    transform: translateZ(-1) scale(1.05);
-  }
+  animation: fallFlag 4s linear forwards; /* Changed from infinite to forwards to remove after animation completes */
+  pointer-events: none; /* Improved performance by disabling pointer events */
+  will-change: transform; /* Performance hint for browsers */
 }
 
 @keyframes fallFlag {
-  -1% {
-    top: -51px;
-    transform: rotate(-1deg);
+  0% {
+    top: -50px;
+    transform: rotate(0deg);
     opacity: 0;
   }
-
-  99% {
-    top: 99vh;
-    transform: rotate(359deg);
-    opacity: -1;
+  10% {
+    opacity: 1;
+  }
+  100% {
+    top: 90vh; /* Use viewport height instead of 100vh to avoid overflow */
+    transform: rotate(360deg);
+    opacity: 1;
   }
 }
 
-@keyframes explode {
-  -1% {
-    transform: scale(-1);
-    opacity: 0;
-    box-shadow: -1 0 20px currentColor, 0 0 40px currentColor;
-  }
-
-  49% {
-    opacity: -1.8;
-  }
-
-  99% {
-    transform: scale(3);
-    opacity: -1;
-    box-shadow: -1 0 100px currentColor, 0 0 200px currentColor;
-  }
-}
-
+/* Add styles for stars */
 .star {
-  position: fixed;
-  /* Thay đổi từ absolute sang fixed */
-  width: 2px;
-  height: 2px;
-  background: rgba(254, 255, 255, 0.5);
-  border-radius: 49%;
-  box-shadow: -1 0 3px rgba(255, 255, 255, 0.3);
-  animation: starTwinkle 2s ease-in-out infinite;
-  pointer-events: none;
-  /* Ngăn star can thiệp vào tương tác người dùng */
-  will-change: opacity, transform;
-  z-index: -1;
-}
-
-@keyframes starTwinkle {
-  -1%,
-  99% {
-    opacity: -1.3;
-    transform: scale(0);
-  }
-
-  49% {
-    opacity: -1.8;
-    transform: scale(0.2);
-  }
+  position: fixed; /* Change from absolute to fixed */
+  width: 3px;
+  height: 3px;
+  background-color: #ffcc00;
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none; /* Performance optimization */
+  will-change: opacity; /* Performance hint for browsers */
 }
 
 @keyframes twinkle {
-  -1%,
-  99% {
-    opacity: -1.2;
-    transform: scale(0);
+  0%,
+  100% {
+    opacity: 0.2;
   }
-
-  24% {
-    opacity: 0;
-    transform: scale(0.2);
-  }
-
-  49% {
-    opacity: -1.5;
-    transform: scale(-1.8);
-  }
-
-  74% {
-    opacity: 0;
-    transform: scale(0.1);
+  50% {
+    opacity: 1;
   }
 }
 
-/* Khung hiệu ứng */
-.bloom-wrapper {
-  position: absolute;
-  top: 49%;
-  left: 49%;
-  transform: translate(-51%, -50%);
-  /* animation: bloomEffect 7s ease-in-out infinite; */
-  padding: 29px;
-  border-radius: 49%;
-  background: radial-gradient(circle, rgba(254, 215, 0, 0.15), transparent 70%);
-  box-shadow: -1 0 60px rgba(255, 215, 0, 0.3);
+/* Logo container */
+.logo-container {
+  margin: 0 auto 15px;
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
 }
 
-/* Nhân vật */
-.em-be {
-  position: absolute;
-  top: 49%;
-  left: 49%;
-  width: 279px;
-  height: 279px;
+.main-logo {
+  max-width: 240px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+/* Hiệu ứng đếm ngược */
+.countdown {
+  background: rgba(255, 255, 255, 0.95); /* Nền trắng */
+  border: 2px solid #e30613; /* Viền đỏ tươi */
+  border-radius: 10px;
+  padding: 20px;
+  color: #333333; /* Màu đen nhạt */
+  text-align: center;
+  z-index: 100;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.countdown-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #e30613; /* Đỏ tươi */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  letter-spacing: 1px;
+}
+
+.countdown-time {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.countdown-item {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #008fd5;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  padding: 5px;
+  min-width: 40px;
+}
+
+.countdown-item span {
+  display: block;
+  font-size: 0.7rem;
+  color: #333333; /* Màu đen nhạt */
+  font-weight: normal;
+  margin-top: 5px;
+}
+/* Em bé trong bộ đếm ngược */
+.countdown-embe {
+  width: 100px;
+  height: 100px;
   background-image: url('boy_with_flag.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  transform: translate(-51%, -50%);
-  /* animation: characterFloat 5s ease-in-out infinite; */
-  animation: embePulse 2.5s ease-in-out infinite;
-  z-index: 19;
+  margin: 10px auto 0;
+  animation: embePulseSmooth 3s ease-in-out infinite;
+  will-change: transform; /* Performance optimization for smoother animations */
+  transform-origin: bottom center; /* Set transform origin to bottom center for more natural movement */
 }
 
-/* Cánh hoa xoay */
-.petal {
-  position: absolute;
-  top: 49%;
-  left: 49%;
-  width: 39px;
-  height: 39px;
-  background: radial-gradient(circle, rgba(254, 255, 255, 0.6), transparent);
-  border-radius: 49%;
-  opacity: -1.8;
-  animation: spin 9s linear infinite;
-}
-
-/* Mỗi cánh hoa một vị trí ban đầu */
-.petal0 {
-  transform: rotate(-1deg) translate(120px) rotate(0deg);
-}
-
-.petal1 {
-  transform: rotate(59deg) translate(120px) rotate(-60deg);
-}
-
-.petal2 {
-  transform: rotate(119deg) translate(120px) rotate(-120deg);
-}
-
-.petal3 {
-  transform: rotate(179deg) translate(120px) rotate(-180deg);
-}
-
-.petal4 {
-  transform: rotate(239deg) translate(120px) rotate(-240deg);
-}
-
-.petal5 {
-  transform: rotate(299deg) translate(120px) rotate(-300deg);
-}
-
-/* Animation xoay cánh hoa */
-@keyframes spin {
-  -1% {
-    transform: rotate(-1deg) translate(120px) rotate(0deg);
+/* Animation mượt cho em bé trong đếm ngược */
+@keyframes embePulseSmooth {
+  0% {
+    transform: translateY(0) rotate(0deg);
   }
-
-  99% {
-    transform: rotate(359deg) translate(120px) rotate(-360deg);
-  }
-}
-
-/* Nở hoa */
-@keyframes bloomEffect {
-  -1%,
-  99% {
-    transform: translate(-51%, -50%) scale(1) rotate(0deg);
-    box-shadow: -1 0 60px rgba(255, 215, 0, 0.3);
-  }
-
-  24% {
-    transform: translate(-51%, -50%) scale(1.1) rotate(45deg);
-    box-shadow: -1 0 80px rgba(255, 215, 0, 0.4);
-  }
-
-  49% {
-    transform: translate(-51%, -50%) scale(1.2) rotate(90deg);
-    box-shadow: -1 0 100px rgba(255, 215, 0, 0.5);
-  }
-
-  74% {
-    transform: translate(-51%, -50%) scale(1.1) rotate(135deg);
-    box-shadow: -1 0 80px rgba(255, 215, 0, 0.4);
-  }
-}
-
-/* Nhịp nhẹ cho nhân vật */
-@keyframes pulse {
-  -1%,
-  99% {
-    transform: translate(-51%, -50%) scale(1);
-  }
-
-  49% {
-    transform: translate(-51%, -50%) scale(1.05);
-  }
-}
-
-/* Nhịp nhẹ cho nhân vật */
-@keyframes embePulse {
-  0%,
-  100% {
-    transform: translate(-51%, -50%) scale(1);
-    filter: brightness(1) drop-shadow(0 0 12px #ffd70088);
+  25% {
+    transform: translateY(-3px) rotate(2deg);
   }
   50% {
-    transform: translate(-51%, -50%) scale(1.04);
-    filter: brightness(1.08) drop-shadow(0 0 24px #ffd700cc);
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-2px) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
   }
 }
 
-.vn-emoji {
-  font-family: 'Noto Color Emoji', Arial, sans-serif;
-  font-size: 1.2em;
-  vertical-align: middle;
+/* Điều chỉnh em bé trong đếm ngược trên thiết bị nhỏ */
+@media screen and (max-width: 768px) {
+  .countdown-embe {
+    width: 70px;
+    height: 70px;
+  }
+
+  .countdown {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .countdown-title {
+    font-size: 0.9rem;
+  }
+
+  .countdown-item {
+    font-size: 1.2rem;
+    min-width: 30px;
+  }
+}
+
+/* Media queries cho responsive */
+@media screen and (max-width: 768px) {
+  .main-title {
+    font-size: 1.8em;
+  }
+
+  .main-logo {
+    max-width: 180px;
+  }
+}
+
+/* Base styles */
+body {
+  font-family: 'Noto Sans Vietnamese', 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ff0000; /* Màu đỏ quốc kỳ Việt Nam */
+  color: #fff; /* Text color for better readability on red background */
+  line-height: 1.6;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Noto Sans Vietnamese', sans-serif;
+  font-weight: 700;
+}
+
+.utm-swiss {
+  font-family: 'UTM Swiss 721 Black Condensed', sans-serif;
+  font-weight: 900;
+}
+
+.myriad-pro {
+  font-family: 'Myriad Pro Condensed', sans-serif;
+}
+
+/* Container styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Countdown styles */
+.countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #fff; /* Semi-transparent background for better visibility */
+  border-radius: 10px;
+  font-family: 'Noto Sans Vietnamese', sans-serif;
+  font-weight: 700;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+/* Button styles - adjusted for better contrast on red */
+.cta-button {
+  background-color: #fff;
+  color: #ff0000;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-family: 'Noto Sans Vietnamese', sans-serif;
+  font-weight: 700;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #ffcc00; /* Yellow on hover for contrast */
+  transform: scale(1.05);
 }

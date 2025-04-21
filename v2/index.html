@@ -4,29 +4,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Giải Phóng Miền Nam 30/04</title>
+  <title>50 Năm Giải Phóng Miền Nam</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Roboto:wght@400;700;900&family=Noto+Sans+Vietnamese:wght@400;700;900&display=swap"
+    rel="stylesheet">
+  <!-- Font UTM Swiss 721 Black Condensed và Myriad Pro Cond là font đặc biệt cần nhúng -->
+  <style>
+    @font-face {
+      font-family: 'UTM Swiss 721 Black Condensed';
+      src: url('fonts/UTMSwiss721BlackCondensed.woff2') format('woff2'),
+        url('fonts/UTMSwiss721BlackCondensed.woff') format('woff');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Myriad Pro Condensed';
+      src: url('fonts/MyriadPro-Cond.woff2') format('woff2'),
+        url('fonts/MyriadPro-Cond.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body {
+      background-color: #FF0000;
+      /* Màu đỏ quốc kỳ Việt Nam */
+    }
+  </style>
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 </head>
 
 <body>
   <div class="container">
-    <h1>
-      <span class="vn-emoji">&#x1F1FB;&#x1F1F3;</span>
-      CHÀO MỪNG 50 NGÀY GIẢI PHÓNG MIỀN NAM
-      <span class="vn-emoji">&#x1F1FB;&#x1F1F3;</span><br>
-      30/04/1975 - 30/04/2025
-    </h1>
-    <div class="bloom-wrapper">
-      <div class="em-be"></div>
-      <div class="petal petal1"></div>
-      <div class="petal petal2"></div>
-      <div class="petal petal3"></div>
-      <div class="petal petal4"></div>
-      <div class="petal petal5"></div>
-      <div class="petal petal6"></div>
+    <div class="header">
+      <div class="logo-container">
+        <img src="logo.webp" alt="Logo 50 năm giải phóng" class="main-logo">
+      </div>
+
+      <h1 class="main-title">
+        <span class="title-line myriad-pro">50 NĂM GIẢI PHÓNG MIỀN NAM</span>
+        <span class="title-line myriad-pro">THỐNG NHẤT ĐẤT NƯỚC</span>
+        <span class="date-text utm-swiss">30.4.1975 – 30.4.2025</span>
+      </h1>
+
+      <div class="cta-buttons">
+        <button class="cta-button history">Xem hành trình lịch sử</button>
+        <button class="cta-button events">Khám phá sự kiện 2025</button>
+      </div>
     </div>
+
+    <div id="countdown-container"></div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="script.js"></script>
 </body>
