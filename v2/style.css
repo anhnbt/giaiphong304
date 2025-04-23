@@ -1,13 +1,12 @@
 body {
   margin: 0;
   font-family: 'Be Vietnam Pro', 'Roboto', Arial, sans-serif;
-  color: #fff; /* Text color for better readability on red background */
+  color: #fff;
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
   background-color: #ff0000; /* Màu đỏ quốc kỳ Việt Nam */
   line-height: 1.6;
-  /* Fix for flickering and unwanted scrollbars */
   overscroll-behavior: none;
 }
 
@@ -33,19 +32,20 @@ html {
   width: 100%;
   text-align: center;
   margin-bottom: 40px;
-  background-color: #fff; /* Trắng làm nền phụ */
+  background-color: #fff;
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border-bottom: 4px solid #e30613; /* Đỏ tươi làm viền */
+  border-bottom: 4px solid #e30613;
 }
+
 /* Tiêu đề chính */
 .main-title {
   font-size: 2.4em;
   font-weight: 900;
   margin: 0 0 30px;
   line-height: 1.2;
-  color: #004b87; /* Xanh đậm */
+  color: #004b87;
 }
 
 .title-line {
@@ -54,13 +54,13 @@ html {
 }
 
 .title-line:first-child {
-  color: #e30613; /* Đỏ tươi cho dòng đầu */
+  color: #e30613;
 }
 
 .date-text {
   display: block;
   font-size: 1.2em;
-  color: #008fd5; /* Xanh dương */
+  color: #008fd5;
   margin-top: 15px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -112,19 +112,19 @@ html {
 }
 
 .cta-button.history {
-  background-color: #e30613; /* Đỏ tươi */
+  background-color: #e30613;
   color: white;
 }
 
 .cta-button.events {
-  background-color: #008fd5; /* Xanh dương */
+  background-color: #008fd5;
   color: white;
 }
 
 .cta-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  background-color: #ffcc00; /* Yellow on hover for contrast */
+  background-color: #ffcc00;
   transform: scale(1.05);
 }
 
@@ -149,14 +149,14 @@ html {
   }
 }
 
-/* Hiệu ứng thêm - pháo hoa và flag-falling */
+/* Hiệu ứng thêm - pháo hoa và cờ rơi */
 .flag-falling {
   width: 29px;
-  position: fixed; /* Change from absolute to fixed to avoid scroll issues */
+  position: fixed;
   z-index: 3;
-  animation: fallFlag 4s linear forwards; /* Changed from infinite to forwards to remove after animation completes */
-  pointer-events: none; /* Improved performance by disabling pointer events */
-  will-change: transform; /* Performance hint for browsers */
+  animation: fallFlag 4s linear forwards;
+  pointer-events: none;
+  will-change: transform;
 }
 
 @keyframes fallFlag {
@@ -169,23 +169,23 @@ html {
     opacity: 1;
   }
   100% {
-    top: 90vh; /* Use viewport height instead of 100vh to avoid overflow */
+    top: 90vh;
     transform: rotate(360deg);
     opacity: 1;
   }
 }
 
-/* Add styles for stars */
+/* Hiệu ứng sao lấp lánh */
 .star {
-  position: fixed; /* Change from absolute to fixed */
+  position: fixed;
   width: 3px;
   height: 3px;
   background-color: #ffcc00;
   border-radius: 50%;
   animation: twinkle 3s ease-in-out infinite;
   z-index: 1;
-  pointer-events: none; /* Performance optimization */
-  will-change: opacity; /* Performance hint for browsers */
+  pointer-events: none;
+  will-change: opacity;
 }
 
 @keyframes twinkle {
@@ -212,13 +212,13 @@ html {
   margin-bottom: 15px;
 }
 
-/* Hiệu ứng đếm ngược */
+/* Phần đếm ngược */
 .countdown {
-  background: rgba(255, 255, 255, 0.95); /* Nền trắng */
-  border: 2px solid #e30613; /* Viền đỏ tươi */
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #e30613;
   border-radius: 10px;
   padding: 20px;
-  color: #333333; /* Màu đen nhạt */
+  color: #333333;
   text-align: center;
   z-index: 100;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -239,7 +239,7 @@ html {
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #e30613; /* Đỏ tươi */
+  color: #e30613;
   letter-spacing: 1px;
 }
 
@@ -261,30 +261,27 @@ html {
 .countdown-item span {
   display: block;
   font-size: 0.7rem;
-  color: #333333; /* Màu đen nhạt */
+  color: #333333;
   font-weight: normal;
   margin-top: 5px;
 }
-/* Em bé trong bộ đếm ngược */
-.countdown-embe {
-  width: 180px;
-  height: 180px;
-  background-image: url('boy_with_flag.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+
+/* Hình ảnh em bé cầm cờ */
+.flag-boy {
+  width: 280px;
+  height: auto;
   position: fixed;
   bottom: 170px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 101;
-  animation: embePulseSmooth 3s ease-in-out infinite;
+  animation: boyPulseSmooth 3s ease-in-out infinite;
   will-change: transform;
   transform-origin: bottom center;
 }
 
-/* Animation mượt cho em bé trong đếm ngược */
-@keyframes embePulseSmooth {
+/* Hiệu ứng chuyển động cho hình ảnh em bé cầm cờ */
+@keyframes boyPulseSmooth {
   0% {
     transform: translateX(-50%) translateY(0) rotate(0deg);
   }
@@ -302,11 +299,10 @@ html {
   }
 }
 
-/* Điều chỉnh em bé trong đếm ngược trên thiết bị nhỏ */
+/* Điều chỉnh cho thiết bị di động */
 @media screen and (max-width: 768px) {
-  .countdown-embe {
+  .flag-boy {
     width: 130px;
-    height: 130px;
     bottom: 140px;
   }
 
@@ -342,7 +338,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #ff0000; /* Màu đỏ quốc kỳ Việt Nam */
-  color: #fff; /* Text color for better readability on red background */
+  color: #fff;
   line-height: 1.6;
 }
 
@@ -381,7 +377,7 @@ h6 {
   text-align: center;
   margin: 20px auto;
   padding: 15px;
-  background-color: #fff; /* Semi-transparent background for better visibility */
+  background-color: #fff;
   border-radius: 10px;
   font-family: 'Be Vietnam Pro', sans-serif;
   font-weight: 700;
@@ -400,13 +396,13 @@ h6 {
   padding: 10px 20px;
   margin: 10px;
   cursor: pointer;
-  font-family: 'Noto Sans Vietnamese', sans-serif;
+  font-family: 'Be Vietnam Pro', sans-serif;
   font-weight: 700;
   border-radius: 5px;
   transition: all 0.3s ease;
 }
 
 .cta-button:hover {
-  background-color: #ffcc00; /* Yellow on hover for contrast */
+  background-color: #ffcc00;
   transform: scale(1.05);
 }

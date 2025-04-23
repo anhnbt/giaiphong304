@@ -9,7 +9,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&family=Noto+Color+Emoji&family=Roboto:wght@400;700;900&display=swap"
     rel="stylesheet">
-  <!-- Font UTM Swiss 721 Black Condensed và Myriad Pro Cond là font đặc biệt cần nhúng -->
+  <!-- Font đặc biệt cho tiêu đề -->
   <style>
     @font-face {
       font-family: 'UTM Swiss 721 Black Condensed';
@@ -31,7 +31,6 @@
 
     body {
       background-color: #FF0000;
-      /* Màu đỏ quốc kỳ Việt Nam */
     }
   </style>
   <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
@@ -39,6 +38,7 @@
 
 <body>
   <div class="container">
+    <!-- Phần header với tiêu đề và logo -->
     <div class="header">
       <div class="logo-container">
         <img src="logo.webp" alt="Logo 50 năm giải phóng" class="main-logo">
@@ -56,9 +56,14 @@
       </div>
     </div>
 
+    <!-- Container cho phần đếm ngược -->
     <div id="countdown-container"></div>
+
+    <!-- Hình ảnh em bé cầm cờ -->
+    <img src="boy_with_flag.png" alt="Em bé cầm cờ" class="flag-boy">
   </div>
 
+  <!-- Script cho hiệu ứng -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="script.js"></script>
 </body>
