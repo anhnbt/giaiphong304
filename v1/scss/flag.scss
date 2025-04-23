@@ -1,15 +1,20 @@
 /* Vietnam Flag Component */
 .flag {
   position: absolute;
-  top: 90px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 60px;
-  background: #ff0000;
-  animation: waveFlag 2s ease-in-out infinite;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  z-index: 5;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 48vw;
+  max-width: 800px;
+  max-height: 480px;
+  background: rgba(255, 0, 0, 0.3);
+  animation: waveFlag 7s ease-in-out infinite;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  opacity: 0.7;
+  backdrop-filter: blur(2px);
+  border-radius: 5px;
 
   &::before {
     content: '';
@@ -17,9 +22,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
-    background: #ffd700;
+    width: 24vw;
+    height: 24vw;
+    max-width: 240px;
+    max-height: 240px;
+    background: rgba(255, 215, 0, 0.7);
     clip-path: polygon(
       50% 0%,
       61% 35%,
@@ -39,22 +46,32 @@
 @keyframes waveFlag {
   0%,
   100% {
-    transform: translateX(-50%) skew(0deg);
+    transform: translate(-50%, -50%) skew(0deg) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translate(-50%, -50%) skew(5deg) scale(1.02);
+    opacity: 0.65;
   }
   50% {
-    transform: translateX(-50%) skew(10deg);
+    transform: translate(-50%, -50%) skew(-3deg) scale(1.05);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translate(-50%, -50%) skew(2deg) scale(1.03);
+    opacity: 0.65;
   }
 }
 
 /* Media queries */
 @media (max-width: 768px) {
   .flag {
-    width: 80px;
-    height: 48px;
+    width: 90vw;
+    height: 54vw;
 
     &::before {
-      width: 24px;
-      height: 24px;
+      width: 27vw;
+      height: 27vw;
     }
   }
 }
