@@ -230,7 +230,8 @@ html {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  position: relative;
+  position: fixed;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -405,4 +406,24 @@ h6 {
 .cta-button:hover {
   background-color: #ffcc00;
   transform: scale(1.05);
+}
+
+/* Celebration message */
+.celebration {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e30613;
+  letter-spacing: 1px;
+  margin: 10px 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }

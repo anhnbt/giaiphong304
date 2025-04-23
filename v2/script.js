@@ -108,13 +108,10 @@ window.addEventListener('resize', () => {
   resizeTimeout = setTimeout(() => {
     createStars();
     window.requestAnimationFrame(() => {
-      const countdownContainer = document.getElementById('countdown-container');
-      if (countdownContainer) {
-        const countdown = countdownContainer.querySelector('.countdown');
-        if (countdown) {
-          countdown.style.width = '80%';
-          countdown.style.maxWidth = '600px';
-        }
+      const countdown = document.querySelector('.countdown');
+      if (countdown) {
+        countdown.style.width = '80%';
+        countdown.style.maxWidth = '600px';
       }
     });
   }, 300);
@@ -122,27 +119,22 @@ window.addEventListener('resize', () => {
 
 // Thiết lập đếm ngược đến 30/04/2025
 function setupCountdown() {
-  const countdownContainer = document.getElementById('countdown-container');
-  if (!countdownContainer) return;
-
-  const countdownElement = document.createElement('div');
-  countdownElement.className = 'countdown';
-  countdownElement.style.left = '50%';
-  countdownElement.style.transform = 'translateX(-50%)';
-  countdownElement.style.width = '80%';
-  countdownElement.style.maxWidth = '600px';
-
-  countdownContainer.appendChild(countdownElement);
-
   // Cập nhật đồng hồ đếm ngược
   function updateCountdown() {
     const targetDate = new Date('2025-04-30T00:00:00');
     const currentDate = new Date();
     const timeDifference = targetDate - currentDate;
 
+    const countdownElement = document.querySelector('.countdown');
+
+    if (!countdownElement) return;
+
     if (timeDifference <= 0) {
+      // Nếu đã tới ngày mục tiêu, hiển thị thông báo chúc mừng
       countdownElement.innerHTML =
-        "<div class='celebration'>CHÀO MỪNG 50 NĂM GIẢI PHÓNG!</div><div class='countdown-embe'></div>";
+        "<div class='celebration'>CHÀO MỪNG 50 NĂM GIẢI PHÓNG!</div>";
+
+      // Bắn pháo hoa đặc biệt
       for (let i = 0; i < 10; i++) {
         setTimeout(() => randomFirework(), i * 200);
       }
@@ -159,21 +151,19 @@ function setupCountdown() {
     );
     const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-    const currentEmBe = countdownElement.querySelector('.countdown-embe');
-    const emBeHtml = currentEmBe
-      ? currentEmBe.outerHTML
-      : '<div class="countdown-embe"></div>';
-
-    countdownElement.innerHTML = `
-      <div class='countdown-title'>ĐẾM NGƯỢC ĐẾN 50 NĂM GIẢI PHÓNG</div>
-      <div class='countdown-time'>
-        <div class='countdown-item'>${days}<span>ngày</span></div>
-        <div class='countdown-item'>${hours}<span>giờ</span></div>
-        <div class='countdown-item'>${minutes}<span>phút</span></div>
-        <div class='countdown-item'>${seconds}<span>giây</span></div>
-      </div>
-      ${emBeHtml}
-    `;
+    // Update countdown values in existing elements
+    document.getElementById(
+      'days-count'
+    ).innerHTML = `${days}<span>ngày</span>`;
+    document.getElementById(
+      'hours-count'
+    ).innerHTML = `${hours}<span>giờ</span>`;
+    document.getElementById(
+      'minutes-count'
+    ).innerHTML = `${minutes}<span>phút</span>`;
+    document.getElementById(
+      'seconds-count'
+    ).innerHTML = `${seconds}<span>giây</span>`;
   }
 
   // Cập nhật đếm ngược mỗi giây
@@ -186,6 +176,7 @@ function setupCountdown() {
     requestAnimationFrame(animateCountdown);
   }
 
+  // Khởi động bộ đếm ngược
   requestAnimationFrame(animateCountdown);
 }
 
