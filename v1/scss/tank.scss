@@ -15,19 +15,20 @@
 
   // Tank model specific positions and animations
   &-843 {
-    left: 30%;
-    bottom: -120px;
-    animation: tank843Appear 5s cubic-bezier(0.42, 0, 0.58, 1) forwards,
-      tankBounce 0.6s ease-in-out infinite 5s;
-    transform: scale(1.2) translateX(-50%);
+    left: -300px; /* Start offscreen to the left */
+    bottom: 60px; /* Fixed vertical position */
+    animation: tank843Move 10s cubic-bezier(0.25, 0.1, 0.25, 1) forwards,
+      /* Increased from 6s to 10s */ tankBounce 0.6s ease-in-out infinite 6s; /* Delayed bounce start */
+    transform: translateX(0); /* Remove translateX(-50%) to prevent jitter */
   }
 
   &-390 {
-    left: 70%;
-    bottom: -120px;
-    animation: tank390Appear 6s cubic-bezier(0.42, 0, 0.58, 1) forwards,
-      tankBounce 0.6s ease-in-out infinite 6s;
-    transform: scale(1.1) translateX(-50%);
+    left: -300px; /* Start offscreen to the left */
+    bottom: 40px; /* Fixed vertical position */
+    animation: tank390Move 12s cubic-bezier(0.25, 0.1, 0.25, 1) forwards 2s,
+      /* Increased from 7s to 12s with 2s delay */ tankBounce 0.6s ease-in-out
+        infinite 8s; /* Delayed bounce start */
+    transform: translateX(0); /* Remove translateX(-50%) to prevent jitter */
   }
 
   // Enhanced smoke effect
@@ -385,12 +386,12 @@
 
     .flag-cloth {
       position: absolute;
-      top: 0;
-      left: 0; /* Align with the flag pole */
+      top: 12px; /* Sits at the top of the flag pole */
+      left: 20px; /* Position it to the right of the pole */
       width: 40px;
       height: 25px;
       background: #dd0000;
-      transform-origin: left center;
+      transform-origin: bottom left; /* Changed to bottom left for realistic waving */
       animation: waveFlag 2s ease-in-out infinite;
       box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 
@@ -533,6 +534,58 @@
   }
 }
 
+@keyframes tank843Move {
+  0% {
+    left: -300px;
+    opacity: 0;
+  }
+  15% {
+    /* Slower fade in */
+    opacity: 0.5;
+  }
+  20% {
+    opacity: 1;
+  }
+  75% {
+    /* Adjusted timing for slower movement */
+    left: 30%;
+  }
+  90% {
+    /* Adjusted timing for slower movement */
+    left: 31%;
+  }
+  100% {
+    left: 30%;
+    opacity: 1;
+  }
+}
+
+@keyframes tank390Move {
+  0% {
+    left: -300px;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.3;
+  }
+  25% {
+    /* Slower fade in */
+    opacity: 1;
+  }
+  75% {
+    /* Adjusted timing for slower movement */
+    left: 70%;
+  }
+  90% {
+    /* Adjusted timing for slower movement */
+    left: 71%;
+  }
+  100% {
+    left: 70%;
+    opacity: 1;
+  }
+}
+
 @keyframes tankBounce {
   0%,
   100% {
@@ -604,42 +657,180 @@
 @media (max-width: 1200px) {
   .tank-843 {
     left: 25%;
-    transform: scale(1) translateX(-50%);
+    transform: translateX(-50%);
   }
   .tank-390 {
     left: 75%;
-    transform: scale(0.9) translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+  @keyframes tank843Move {
+    0% {
+      left: -300px;
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.5;
+    }
+    20% {
+      opacity: 1;
+    }
+    75% {
+      left: 25%;
+    }
+    90% {
+      left: 26%;
+    }
+    100% {
+      left: 25%;
+      opacity: 1;
+    }
+  }
+
+  @keyframes tank390Move {
+    0% {
+      left: -300px;
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.3;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      left: 75%;
+    }
+    90% {
+      left: 76%;
+    }
+    100% {
+      left: 75%;
+      opacity: 1;
+    }
   }
 }
 
 @media (max-width: 768px) {
   .tank-843 {
     left: 30%;
-    transform: scale(0.85) translateX(-50%);
+    transform: scale(0.85); /* Keep responsive scaling */
   }
   .tank-390 {
     left: 70%;
-    transform: scale(0.75) translateX(-50%);
+    transform: scale(0.75); /* Keep responsive scaling */
     animation-delay: 0.5s;
   }
 
   .tank .tank-hull .tank-hull-body .tank-number {
     font-size: 20px; /* Slightly smaller for mobile but still readable */
   }
+
+  @keyframes tank843Move {
+    0% {
+      left: -300px;
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.5;
+    }
+    20% {
+      opacity: 1;
+    }
+    75% {
+      left: 30%;
+    }
+    90% {
+      left: 31%;
+    }
+    100% {
+      left: 30%;
+      opacity: 1;
+    }
+  }
+
+  @keyframes tank390Move {
+    0% {
+      left: -300px;
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.3;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      left: 70%;
+    }
+    90% {
+      left: 71%;
+    }
+    100% {
+      left: 70%;
+      opacity: 1;
+    }
+  }
 }
 
 @media (max-width: 480px) {
   .tank-843 {
     left: 35%;
-    transform: scale(0.65) translateX(-50%);
+    transform: scale(0.65); /* Keep responsive scaling */
   }
   .tank-390 {
     left: 65%;
-    transform: scale(0.55) translateX(-50%);
+    transform: scale(0.55); /* Keep responsive scaling */
     animation-delay: 0.8s;
   }
 
   .tank .tank-hull .tank-hull-body .tank-number {
     font-size: 18px; /* Adjust for smallest screens */
+  }
+
+  @keyframes tank843Move {
+    0% {
+      left: -200px;
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.5;
+    }
+    20% {
+      opacity: 1;
+    }
+    75% {
+      left: 35%;
+    }
+    90% {
+      left: 36%;
+    }
+    100% {
+      left: 35%;
+      opacity: 1;
+    }
+  }
+
+  @keyframes tank390Move {
+    0% {
+      left: -200px;
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.3;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      left: 65%;
+    }
+    90% {
+      left: 66%;
+    }
+    100% {
+      left: 65%;
+      opacity: 1;
+    }
   }
 }

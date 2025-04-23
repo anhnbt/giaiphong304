@@ -1,14 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const tank = document.querySelector('.tank');
-  const screenWidth = window.innerWidth;
-  const TANK_X_POSITION = screenWidth / 2; // Vị trí giữa màn hình (điều chỉnh theo kích thước xe tăng)
-  const tankSpeed = 2; // Tốc độ di chuyển của xe tăng (px/frame)
-  let tankPosition = 0; // Vị trí hiện tại của xe tăng (px)
-
-  // Apply scale to tank
-  tank.style.transform = 'scale(1.5)';
-  tank.style.transformOrigin = 'bottom center';
-
   // Make all family members visible from the start
   const familyMembers = [
     '.son',
@@ -27,31 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
       member.style.opacity = '1';
     }
   });
-
-  // Simple tank movement without collision detection
-  function updateTank() {
-    const tankRect = tank.getBoundingClientRect();
-    if (tankPosition < TANK_X_POSITION - tankRect.width / 2) {
-      tankPosition += tankSpeed;
-      tank.style.left = `${tankPosition}px`;
-      requestAnimationFrame(updateTank);
-    } else {
-      // Tank has reached its final position
-      tank.style.left = `${TANK_X_POSITION - tankRect.width / 2}px`;
-
-      // Trigger tank shooting effect once when it reaches position
-      const tankGun = document.querySelector('.tank-gun');
-      if (tankGun) {
-        tankGun.style.animation = 'none';
-        setTimeout(() => {
-          tankGun.style.animation = 'shootEffect 0.3s';
-        }, 10);
-      }
-    }
-  }
-
-  // Start tank movement
-  updateTank();
 
   // Regular fireworks function
   function launchRegularFireworks() {
