@@ -26,42 +26,42 @@
     &::before {
       content: '';
       position: absolute;
-      top: -8px;
-      left: -2px;
-      width: 54px;
-      height: 40px;
+      top: -15px;
+      left: -4px;
+      width: 58px;
+      height: 35px;
       background: #6b3e2e; /* Brown hair */
-      border-radius: 25px 25px 0 0;
+      border-radius: 30px 30px 0 0;
       clip-path: polygon(
-        0% 100%,
-        5% 60%,
-        15% 35%,
-        30% 20%,
-        50% 15%,
-        70% 20%,
-        85% 35%,
-        95% 60%,
-        100% 100%,
-        100% 130%,
-        0% 130%
+        0% 90%,
+        0% 50%,
+        10% 35%,
+        30% 10%,
+        70% 10%,
+        90% 35%,
+        100% 50%,
+        100% 90%
       );
+      z-index: -1;
     }
 
     /* Hair ponytails */
     &::after {
       content: '';
       position: absolute;
-      top: 12px;
-      right: -15px;
-      width: 18px;
-      height: 25px;
+      top: 0px;
+      right: -20px;
+      width: 22px;
+      height: 30px;
       background: #6b3e2e;
-      border-radius: 50%;
+      border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
       transform: rotate(20deg);
+      box-shadow: -38px 0px 0 -4px #6b3e2e;
+      z-index: -1;
     }
   }
 
-  /* Eyes */
+  /* Eyes - Ensuring they're above the hair */
   &-eyes {
     position: absolute;
     top: 15px;
@@ -71,6 +71,7 @@
     transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
+    z-index: 3;
   }
 
   &-eye {
@@ -102,7 +103,7 @@
     }
   }
 
-  /* Mouth */
+  /* Mouth - Ensuring it's above the hair */
   &-mouth {
     position: absolute;
     bottom: 15px;
@@ -113,6 +114,7 @@
     background: #ff6666;
     border-radius: 0 0 5px 5px;
     animation: mouthMove 2s ease-in-out infinite;
+    z-index: 3;
 
     /* Add smile curve */
     &::before {
@@ -128,7 +130,7 @@
     }
   }
 
-  /* Blush marks */
+  /* Blush marks - Ensuring they're above the hair */
   &-blush {
     position: absolute;
     width: 8px;
@@ -136,6 +138,7 @@
     background: rgba(255, 153, 153, 0.8);
     border-radius: 50%;
     top: 22px;
+    z-index: 3;
 
     &.left {
       left: 8px;

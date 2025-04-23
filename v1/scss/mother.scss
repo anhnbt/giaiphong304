@@ -26,28 +26,41 @@
     &::before {
       content: '';
       position: absolute;
-      top: -8px;
-      left: -5px;
-      width: 62px;
-      height: 45px;
+      top: -15px;
+      left: -6px;
+      width: 64px;
+      height: 40px;
       background: #5e3a1e; /* Dark brown hair */
-      border-radius: 25px 25px 0 0;
+      border-radius: 30px 30px 0 0;
       clip-path: polygon(
-        0% 100%,
-        10% 70%,
-        20% 40%,
-        40% 20%,
-        60% 20%,
-        80% 40%,
-        90% 70%,
-        100% 100%,
-        85% 120%,
-        15% 120%
+        0% 90%,
+        0% 55%,
+        15% 35%,
+        35% 15%,
+        65% 15%,
+        85% 35%,
+        100% 55%,
+        100% 90%
       );
+      z-index: -1;
+    }
+
+    /* Add subtle hair details */
+    &::after {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -2px;
+      width: 56px;
+      height: 25px;
+      background: transparent;
+      border-radius: 50%;
+      box-shadow: 15px 25px 0 -17px #5e3a1e, 35px 25px 0 -17px #5e3a1e;
+      z-index: -1;
     }
   }
 
-  /* Eyes */
+  /* Eyes - Ensuring they're above the hair */
   &-eyes {
     position: absolute;
     top: 16px;
@@ -57,6 +70,7 @@
     transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
+    z-index: 3;
   }
 
   &-eye {
@@ -101,7 +115,7 @@
     }
   }
 
-  /* Mouth - Lipstick */
+  /* Mouth - Ensuring it's above the hair */
   &-mouth {
     position: absolute;
     bottom: 15px;
@@ -112,9 +126,10 @@
     background: #cc3366; /* Lipstick color */
     border-radius: 0 0 5px 5px;
     animation: mouthMove 2s ease-in-out infinite;
+    z-index: 3;
   }
 
-  /* Blush marks */
+  /* Blush marks - Ensuring they're above the hair */
   &-blush {
     position: absolute;
     width: 10px;
@@ -122,6 +137,7 @@
     background: rgba(255, 153, 153, 0.8);
     border-radius: 50%;
     top: 22px;
+    z-index: 3;
 
     &.left {
       left: 7px;
