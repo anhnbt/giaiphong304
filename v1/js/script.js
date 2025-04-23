@@ -78,6 +78,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateTank(); // Bắt đầu cập nhật xe tăng
 
+  // Thiết lập đếm ngược đến 30/04/2025
+  function setupCountdown() {
+    // Cập nhật đồng hồ đếm ngược
+    function updateCountdown() {
+      const targetDate = new Date('2025-04-30T00:00:00');
+      const currentDate = new Date();
+      const timeDifference = targetDate - currentDate;
+
+      const countdownElement = document.querySelector('.countdown');
+
+      if (!countdownElement) return;
+
+      if (timeDifference <= 0) {
+        // Nếu đã tới ngày mục tiêu, hiển thị thông báo chúc mừng
+        countdownElement.innerHTML =
+          "<div class='celebration'>CHÀO MỪNG 50 NĂM GIẢI PHÓNG!</div>";
+
+        // Bắn pháo hoa đặc biệt
+        for (let i = 0; i < 10; i++) {
+          setTimeout(() => {
+            confetti({
+              particleCount: 100,
+              spread: 70,
+              origin: { x: Math.random(), y: Math.random() * 0.5 },
+              colors: ['#FF0000', '#FFD700', '#0096FF'],
+            });
+          }, i * 200);
+        }
+        return;
+      }
+
+      // Tính thời gian còn lại
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor(
+        (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      // Update countdown values in existing elements
+      document.getElementById(
+        'days-count'
+      ).innerHTML = `${days}<span>ngày</span>`;
+      document.getElementById(
+        'hours-count'
+      ).innerHTML = `${hours}<span>giờ</span>`;
+      document.getElementById(
+        'minutes-count'
+      ).innerHTML = `${minutes}<span>phút</span>`;
+      document.getElementById(
+        'seconds-count'
+      ).innerHTML = `${seconds}<span>giây</span>`;
+    }
+
+    // Cập nhật đếm ngược mỗi giây
+    let lastUpdate = 0;
+    function animateCountdown(timestamp) {
+      if (timestamp - lastUpdate >= 1000) {
+        updateCountdown();
+        lastUpdate = timestamp;
+      }
+      requestAnimationFrame(animateCountdown);
+    }
+
+    // Khởi động bộ đếm ngược
+    requestAnimationFrame(animateCountdown);
+  }
+
+  // Khởi động đếm ngược
+  setupCountdown();
+
   const quoteElement = document.querySelector('.quote');
   const quotes = [
     'Hòa bình và phát triển - 30/04/1975',

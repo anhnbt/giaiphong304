@@ -670,7 +670,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Arial, sans-serif;
+  font-family: "Be Vietnam Pro", Arial, sans-serif;
   background: linear-gradient(135deg, #ff3333 0%, #ff6666 50%, #ff3333 100%);
   color: #fff;
 }
@@ -691,17 +691,86 @@ body {
   transform: translateX(-50%);
   color: #ffd700;
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
   text-shadow: 2px 2px 2px #000000;
   white-space: nowrap;
   overflow: hidden;
   z-index: 10;
+  font-family: "Be Vietnam Pro", Arial, sans-serif;
+}
+
+/* Phần đếm ngược */
+.countdown {
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #e30613;
+  border-radius: 10px;
+  padding: 15px;
+  color: #333333;
+  text-align: center;
+  z-index: 100;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Be Vietnam Pro", Arial, sans-serif;
+}
+
+.countdown-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #e30613;
+  letter-spacing: 1px;
+}
+
+.countdown-time {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.countdown-item {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #008fd5;
+  padding: 5px;
+  min-width: 40px;
+}
+
+.countdown-item span {
+  display: block;
+  font-size: 0.7rem;
+  color: #333333;
+  font-weight: normal;
+  margin-top: 5px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .quote {
     font-size: 16px;
+  }
+  .countdown {
+    width: 90%;
+    padding: 10px;
+    top: 60px;
+  }
+  .countdown-title {
+    font-size: 0.9rem;
+  }
+  .countdown-item {
+    font-size: 1.2rem;
+    min-width: 30px;
   }
 }
 
