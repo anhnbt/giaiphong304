@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const tankSpeed = 2; // Tốc độ di chuyển của xe tăng (px/frame)
   let tankPosition = 0; // Vị trí hiện tại của xe tăng (px)
 
+  // Apply scale to tank
+  tank.style.transform = 'scale(1.5)';
+  tank.style.transformOrigin = 'bottom center';
+
   // Make all family members visible from the start
   const familyMembers = [
     '.son',

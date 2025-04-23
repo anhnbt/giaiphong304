@@ -1,12 +1,14 @@
 /* Pure CSS Tank Component */
 .tank {
   position: absolute;
-  left: -200px;
-  bottom: 100px;
+  left: 0;
+  bottom: 50px; /* Updated position */
   width: 200px;
   height: 110px;
   z-index: 10;
   animation: moveTank 15s linear infinite;
+  transform: scale(1.5); /* Increase size by 50% */
+  transform-origin: bottom center; /* Ensure scaling from bottom center */
 
   // Smoke effect for tank
   &::after {

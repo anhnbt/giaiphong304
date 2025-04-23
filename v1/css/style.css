@@ -3,12 +3,14 @@
 /* Pure CSS Tank Component */
 .tank {
   position: absolute;
-  left: -200px;
-  bottom: 100px;
+  left: 0;
+  bottom: 50px; /* Updated position */
   width: 200px;
   height: 110px;
   z-index: 10;
   animation: moveTank 15s linear infinite;
+  transform: scale(1.5); /* Increase size by 50% */
+  transform-origin: bottom center; /* Ensure scaling from bottom center */
 }
 .tank::after {
   content: "";
@@ -315,8 +317,8 @@
 /* Pure CSS Son Character - Cute Chibi Style */
 .son {
   position: absolute;
-  bottom: 99px;
-  left: 45%; /* Position in the middle */
+  bottom: 100px; /* Updated position */
+  left: 25%; /* Adjusted horizontal position */
   width: 100px;
   height: 120px;
   z-index: 3;
@@ -667,8 +669,8 @@
 /* Pure CSS Daughter Character - Cute Chibi Style */
 .daughter {
   position: absolute;
-  bottom: 99px;
-  left: 20%; /* Position to the left */
+  bottom: 100px; /* Updated position */
+  left: 40%; /* Adjusted horizontal position */
   width: 100px;
   height: 120px;
   z-index: 3;
@@ -1010,8 +1012,8 @@
 /* Pure CSS Father Character - Cute Chibi Style */
 .father {
   position: absolute;
-  bottom: 99px;
-  left: 70%; /* Position to the right */
+  bottom: 100px; /* Updated position */
+  left: 55%; /* Adjusted horizontal position */
   width: 110px; /* Slightly bigger */
   height: 140px;
   z-index: 3;
@@ -1304,8 +1306,8 @@
 /* Pure CSS Mother Character - Cute Chibi Style */
 .mother {
   position: absolute;
-  bottom: 99px;
-  left: 95%; /* Position far right */
+  bottom: 100px; /* Updated position */
+  left: 70%; /* Adjusted horizontal position */
   width: 110px;
   height: 140px;
   z-index: 3;
@@ -1636,8 +1638,8 @@
 /* Pure CSS Grandmother Character - Cute Chibi Style */
 .grandmother {
   position: absolute;
-  bottom: 200px; /* Position higher up */
-  left: 30%;
+  bottom: 100px; /* Updated position */
+  left: 10%; /* Adjusted horizontal position */
   width: 100px;
   height: 130px;
   z-index: 3;
@@ -1879,12 +1881,12 @@
 /* Animation keyframes */
 @keyframes bouncyRise {
   0% {
-    bottom: 150px;
+    bottom: 50px;
     opacity: 0;
     transform: scale(0.5) rotate(-5deg);
   }
   40% {
-    bottom: 230px;
+    bottom: 130px;
     opacity: 1;
     transform: scale(1.1) rotate(5deg);
   }
@@ -1895,7 +1897,7 @@
     transform: scale(1.05) rotate(2deg);
   }
   100% {
-    bottom: 200px;
+    bottom: 100px;
     opacity: 1;
     transform: scale(1) rotate(0deg);
   }
@@ -1951,8 +1953,8 @@
 /* Pure CSS Grandfather Character - Cute Chibi Style */
 .grandfather {
   position: absolute;
-  bottom: 200px; /* Position higher up */
-  left: 80%;
+  bottom: 100px; /* Updated position */
+  left: 85%; /* Adjusted horizontal position */
   width: 110px;
   height: 140px;
   z-index: 3;
@@ -2207,12 +2209,12 @@
 /* Animation keyframes */
 @keyframes bouncyRise {
   0% {
-    bottom: 150px;
+    bottom: 50px;
     opacity: 0;
     transform: scale(0.5) rotate(-5deg);
   }
   40% {
-    bottom: 230px;
+    bottom: 130px;
     opacity: 1;
     transform: scale(1.1) rotate(5deg);
   }
@@ -2223,7 +2225,7 @@
     transform: scale(1.05) rotate(2deg);
   }
   100% {
-    bottom: 200px;
+    bottom: 100px;
     opacity: 1;
     transform: scale(1) rotate(0deg);
   }
