@@ -4,47 +4,38 @@ document.addEventListener('DOMContentLoaded', () => {
   const TANK_X_POSITION = screenWidth / 2; // Vị trí giữa màn hình (điều chỉnh theo kích thước xe tăng)
   const tankSpeed = 2; // Tốc độ di chuyển của xe tăng (px/frame)
   let tankPosition = 0; // Vị trí hiện tại của xe tăng (px)
-  let shootCount = 0; // Biến đếm số lần bắn
-  const maxShots = 3; // Số lần bắn tối đa
-  let hasShot = false; // Trạng thái để kiểm tra xem đã bắn trong vòng lặp này chưa
 
-  // Hide child initially
-  const child = document.querySelector('.child');
-  if (child) {
-    child.style.visibility = 'hidden';
-    child.style.opacity = '0';
-  }
+  // Make all family members visible from the start
+  const familyMembers = [
+    '.son',
+    '.daughter',
+    '.father',
+    '.mother',
+    '.grandmother',
+    '.grandfather',
+  ];
 
-  function showChildEffect() {
-    if (!child) return;
+  // Show all family members
+  familyMembers.forEach((selector) => {
+    const member = document.querySelector(selector);
+    if (member) {
+      member.style.visibility = 'visible';
+      member.style.opacity = '1';
+    }
+  });
 
-    // Reset animation
-    child.style.animation = 'none';
-    child.offsetHeight; // Trigger reflow
-
-    // Reapply animation and show child
-    child.style.visibility = 'visible';
-    child.style.opacity = '1';
-    // child.style.animation = 'riseUp 3s ease-out forwards';
-
-    // Position the child near the tank
-    child.style.left = `${TANK_X_POSITION - 50}px`; // Center relative to tank
-  }
-
+  // Simple tank movement without collision detection
   function updateTank() {
     const tankRect = tank.getBoundingClientRect();
     if (tankPosition < TANK_X_POSITION - tankRect.width / 2) {
       tankPosition += tankSpeed;
       tank.style.left = `${tankPosition}px`;
-    }
+      requestAnimationFrame(updateTank);
+    } else {
+      // Tank has reached its final position
+      tank.style.left = `${TANK_X_POSITION - tankRect.width / 2}px`;
 
-    // Kiểm tra điều kiện bắn
-    if (
-      shootCount < maxShots &&
-      !hasShot &&
-      tankPosition >= TANK_X_POSITION - tankRect.width / 2
-    ) {
-      // Trigger tank shooting effect
+      // Trigger tank shooting effect once when it reaches position
       const tankGun = document.querySelector('.tank-gun');
       if (tankGun) {
         tankGun.style.animation = 'none';
@@ -52,31 +43,31 @@ document.addEventListener('DOMContentLoaded', () => {
           tankGun.style.animation = 'shootEffect 0.3s';
         }, 10);
       }
-
-      showChildEffect();
-
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { x: 0.5, y: 0.5 },
-        colors: ['#FF0000', '#FFD700', '#0096FF'], // Updated colors
-      });
-
-      shootCount++;
-      hasShot = true;
-
-      setTimeout(() => {
-        hasShot = false;
-      }, 1000);
-    }
-
-    // Tiếp tục cập nhật nếu chưa đạt số lần bắn tối đa
-    if (tankPosition < TANK_X_POSITION - tankRect.width / 2) {
-      requestAnimationFrame(updateTank);
     }
   }
 
-  updateTank(); // Bắt đầu cập nhật xe tăng
+  // Start tank movement
+  updateTank();
+
+  // Regular fireworks function
+  function launchRegularFireworks() {
+    // Create fireworks at semi-random positions
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { x: 0.3 + Math.random() * 0.4, y: 0.3 + Math.random() * 0.3 },
+      colors: ['#FF0000', '#FFD700', '#0096FF'], // Red, Gold, Blue colors
+      startVelocity: 30,
+      gravity: 0.5,
+      shapes: ['circle', 'square'],
+      scalar: 1,
+    });
+  }
+
+  // Launch fireworks every 3 seconds
+  setInterval(launchRegularFireworks, 3000);
+  // Initial fireworks
+  launchRegularFireworks();
 
   // Thiết lập đếm ngược đến 30/04/2025
   function setupCountdown() {
