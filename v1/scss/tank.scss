@@ -1,94 +1,263 @@
-/* Pure CSS Tank Component */
+/* Enhanced CSS Tank Component with Models 843 and 390 */
 .tank {
   position: absolute;
-  left: 50%; /* Đặt xe tăng ở giữa */
-  bottom: -110px; /* Bắt đầu từ ngoài màn hình */
-  width: 200px;
-  height: 110px;
+  width: 240px;
+  height: 120px;
   z-index: 10;
-  animation: tankAppear 3s ease-out forwards,
-    tankBounce 0.6s ease-in-out infinite; /* Added bounce animation */
-  transform: scale(1.5) translateX(-50%); /* Tăng kích thước và căn giữa */
-  transform-origin: bottom center; /* Đảm bảo co giãn từ điểm trung tâm bên dưới */
+  transform-origin: bottom center;
 
-  // Smoke effect for tank
-  &::after {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 80px;
-    width: 10px;
-    height: 10px;
-    background: rgba(200, 200, 200, 0.8);
-    border-radius: 50%;
-    opacity: 0;
-    animation: smoke 2s linear infinite;
-  }
-
+  // Common tank styles
   &-body {
     position: relative;
     width: 100%;
     height: 100%;
   }
 
-  // Tank Hull
+  // Tank model specific positions and animations
+  &-843 {
+    left: 30%;
+    bottom: -120px;
+    animation: tank843Appear 5s cubic-bezier(0.42, 0, 0.58, 1) forwards,
+      tankBounce 0.6s ease-in-out infinite 5s;
+    transform: scale(1.2) translateX(-50%);
+  }
+
+  &-390 {
+    left: 70%;
+    bottom: -120px;
+    animation: tank390Appear 6s cubic-bezier(0.42, 0, 0.58, 1) forwards,
+      tankBounce 0.6s ease-in-out infinite 6s;
+    transform: scale(1.1) translateX(-50%);
+  }
+
+  // Enhanced smoke effect
+  &-exhaust {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    z-index: 1;
+
+    .exhaust-smoke {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: rgba(80, 80, 80, 0.8);
+      border-radius: 50%;
+      filter: blur(2px);
+      animation: exhaust 1.5s linear infinite;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: rgba(100, 100, 100, 0.7);
+        border-radius: 50%;
+        filter: blur(2px);
+      }
+
+      &::before {
+        left: -5px;
+        top: 3px;
+        animation: exhaust 1.7s linear infinite 0.3s;
+      }
+
+      &::after {
+        left: 5px;
+        top: -3px;
+        animation: exhaust 1.3s linear infinite 0.6s;
+      }
+    }
+  }
+
+  // Enhanced Tank Hull
   &-hull {
     position: absolute;
-    bottom: 25px;
-    width: 190px;
-    height: 45px;
-    background: #3a4542;
-    border-radius: 6px;
+    bottom: 28px;
+    width: 220px;
+    height: 50px;
+    background: linear-gradient(to bottom, #4a5552, #2d3432);
+    border-radius: 8px 0 0 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     z-index: 3;
 
     &-front {
       position: absolute;
-      right: -20px;
+      right: -25px;
       top: 0;
-      width: 40px;
-      height: 45px;
-      background: #3a4542;
-      clip-path: polygon(0 0, 100% 30%, 100% 70%, 0 100%);
+      width: 45px;
+      height: 50px;
+      background: linear-gradient(to right, #4a5552, #2d3432);
+      clip-path: polygon(0 0, 100% 20%, 100% 80%, 0 100%);
     }
 
     &-body {
       position: absolute;
       width: 100%;
       height: 100%;
-      border-bottom: 2px solid #252e2a;
+      border-bottom: 3px solid #1a211d;
+      overflow: hidden;
     }
   }
 
-  // Tank Turret
+  // Enhanced Tank Turret
   &-turret {
     position: absolute;
-    bottom: 45px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-    width: 95px;
-    height: 35px;
-    background: #2a3330;
-    border-radius: 10px 10px 0 0;
+    width: 105px;
+    height: 40px;
+    background: linear-gradient(to bottom, #383f3d, #1e2422);
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
     z-index: 4;
+
+    // Tank number - moved to turret
+    .tank-number {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 18px;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000, 0 0 5px rgba(0, 0, 0, 0.7);
+      z-index: 10;
+      padding: 1px 4px;
+      border-radius: 2px;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    // Tank insignia - moved to turret
+    .tank-insignia {
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      width: 15px;
+      height: 15px;
+      background-color: #c10000;
+      border-radius: 50%;
+      z-index: 10;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        height: 60%;
+        background-color: #ffdd00;
+        clip-path: polygon(
+          50% 0%,
+          61% 35%,
+          98% 35%,
+          68% 57%,
+          79% 91%,
+          50% 70%,
+          21% 91%,
+          32% 57%,
+          2% 35%,
+          39% 35%
+        );
+      }
+    }
+
+    // Antenna
+    .tank-antenna {
+      position: absolute;
+      top: -30px;
+      right: 20px;
+      width: 2px;
+      height: 35px;
+      background: #111;
+      z-index: 1;
+      transform: rotate(-5deg);
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: -1px;
+        width: 4px;
+        height: 4px;
+        background: #222;
+        border-radius: 50%;
+      }
+    }
+
+    // Hatch
+    .tank-hatch {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 15px;
+      background: #1a1e1d;
+      border-radius: 5px;
+      border: 1px solid #444;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 24px;
+        height: 9px;
+        background: #0f1211;
+        border-radius: 2px;
+      }
+    }
   }
 
+  // Enhanced Gun
   &-gun {
-    position: absolute;
+    position: relative;
     top: 15px;
     right: -80px;
-    width: 100px;
-    height: 10px;
-    background: #2a3330;
-    border-radius: 5px;
+    height: 15px;
     z-index: 2;
+
+    &-barrel {
+      position: absolute;
+      width: 120px;
+      height: 14px;
+      background: linear-gradient(to bottom, #2f3634, #1a1e1d);
+      border-radius: 7px;
+    }
+
+    &-muzzle-brake {
+      position: absolute;
+      right: -10px;
+      top: -3px;
+      width: 20px;
+      height: 20px;
+      background: #1a1e1d;
+      border-radius: 3px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: -2px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        background: #0f1211;
+        border-radius: 2px;
+      }
+    }
   }
 
-  // Tank Tracks
+  // Enhanced Tank Tracks
   &-tracks {
     position: absolute;
     bottom: 0;
-    width: 190px;
-    height: 25px;
+    width: 220px;
+    height: 28px;
     z-index: 2;
   }
 
@@ -97,128 +266,269 @@
     &-right {
       position: absolute;
       width: 100%;
-      height: 25px;
-      background: #232323;
-      border-radius: 12px;
+      height: 28px;
+      background: #151515;
+      border-radius: 14px;
       overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 
       &::before {
         content: '';
         position: absolute;
-        width: 200%;
+        width: 300%;
         height: 100%;
         left: 0;
         top: 0;
         background: repeating-linear-gradient(
           90deg,
-          #232323,
-          #232323 20px,
-          #333333 20px,
-          #333333 40px
+          #151515,
+          #151515 15px,
+          #252525 15px,
+          #252525 30px
         );
-        animation: moveTrack 0.4s linear infinite; /* Sped up track motion */
+        animation: moveTrack 0.4s linear infinite;
       }
     }
   }
 
+  // Enhanced wheels
   &-wheels {
     position: absolute;
     bottom: 4px;
     width: 100%;
-    height: 15px;
+    height: 20px;
     display: flex;
     justify-content: space-between;
     padding: 0 15px;
     box-sizing: border-box;
 
     .wheel {
-      width: 15px;
-      height: 15px;
-      background: #111;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #333, #111);
       border-radius: 50%;
       position: relative;
-      animation: rotateWheel 0.4s linear infinite; /* Sped up wheel rotation */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      animation: rotateWheel 0.4s linear infinite;
 
       &::after {
         content: '';
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 5px;
-        height: 5px;
-        background: #444;
+        width: 8px;
+        height: 8px;
+        background: radial-gradient(circle, #555, #222);
         border-radius: 50%;
         transform: translate(-50%, -50%);
       }
     }
+
+    // Special wheel designs for drive sprocket and idler wheel
+    .tank-sprocket {
+      width: 22px;
+      height: 22px;
+      left: 10px;
+      position: absolute;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: 2px dotted #444;
+        border-radius: 50%;
+        box-sizing: border-box;
+      }
+    }
+
+    .tank-idler {
+      width: 18px;
+      height: 18px;
+      right: 10px;
+      position: absolute;
+    }
   }
 
-  // Tank Flag
+  // Suspension system
+  &-suspension {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+    .suspension-unit {
+      width: 30px;
+      height: 5px;
+      background: #333;
+      border-radius: 2px;
+      animation: suspensionWork 0.6s ease-in-out infinite alternate;
+    }
+  }
+
+  // Enhanced Flag - moved to rear of tank
   &-flag {
     position: absolute;
-    top: -35px;
-    left: 100px;
+    top: 0px;
+    left: 20px; /* Moved to rear/left side of tank */
     z-index: 5;
 
     .flag-pole {
       position: absolute;
-      width: 4px;
-      height: 45px;
-      background: #888;
+      width: 3px;
+      height: 50px;
+      background: linear-gradient(to right, #666, #999, #666);
+      left: 0; /* Align with the left edge of the flag area */
     }
 
     .flag-cloth {
       position: absolute;
       top: 0;
-      left: 4px;
-      width: 35px;
-      height: 20px;
-      background: #ff0000;
+      left: 0; /* Align with the flag pole */
+      width: 40px;
+      height: 25px;
+      background: #dd0000;
       transform-origin: left center;
-      animation: waveSmallFlag 2s ease-in-out infinite;
+      animation: waveFlag 2s ease-in-out infinite;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 30%;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+      }
+
+      .flag-star {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 15px;
+        height: 15px;
+        background: #ffdd00;
+        transform: translate(-50%, -50%);
+        clip-path: polygon(
+          50% 0%,
+          61% 35%,
+          98% 35%,
+          68% 57%,
+          79% 91%,
+          50% 70%,
+          21% 91%,
+          32% 57%,
+          2% 35%,
+          39% 35%
+        );
+        filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
+      }
+    }
+  }
+
+  // Model-specific differences
+  &-843 {
+    .tank-hull {
+      background: linear-gradient(to bottom, #3e4a46, #232b28);
     }
 
-    .flag-star {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 12px;
-      height: 12px;
-      background: #ffd700;
-      transform: translate(-50%, -50%);
-      clip-path: polygon(
-        50% 0%,
-        61% 35%,
-        98% 35%,
-        68% 57%,
-        79% 91%,
-        50% 70%,
-        21% 91%,
-        32% 57%,
-        2% 35%,
-        39% 35%
-      );
+    .tank-gun-barrel {
+      width: 130px;
+    }
+
+    .tank-number {
+      font-size: 18px;
+      background: rgba(48, 64, 54, 0.5);
+    }
+
+    .tank-flag {
+      left: 15px; /* Specific position for tank 843 */
+    }
+  }
+
+  &-390 {
+    .tank-hull {
+      background: linear-gradient(to bottom, #444c47, #27302c);
+    }
+
+    .tank-turret {
+      width: 100px;
+    }
+
+    .tank-number {
+      font-size: 16px;
+      background: rgba(40, 55, 50, 0.5);
+    }
+
+    .tank-flag {
+      left: 25px; /* Specific position for tank 390 */
+      top: 5px; /* Slightly higher on this model */
     }
   }
 }
 
 /* Tank-related animations */
-@keyframes tankAppear {
+@keyframes tank843Appear {
   0% {
-    bottom: -110px;
+    bottom: -120px;
     opacity: 0;
   }
   20% {
-    opacity: 1;
+    bottom: -60px;
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  40% {
+    bottom: 0px;
+    opacity: 0.8;
   }
   60% {
-    bottom: 55px; /* Slight overshoot */
+    bottom: 50px;
+    opacity: 1;
   }
-  80% {
-    bottom: 45px; /* Bounce back */
+  75% {
+    bottom: 65px;
+  }
+  85% {
+    bottom: 55px;
   }
   100% {
-    bottom: 50px;
+    bottom: 60px;
+    opacity: 1;
+  }
+}
+
+@keyframes tank390Appear {
+  0% {
+    bottom: -120px;
+    opacity: 0;
+  }
+  20% {
+    bottom: -80px;
+    opacity: 0;
+  }
+  40% {
+    bottom: -30px;
+    opacity: 0.5;
+  }
+  60% {
+    bottom: 20px;
+    opacity: 0.8;
+  }
+  75% {
+    bottom: 45px;
+    opacity: 1;
+  }
+  85% {
+    bottom: 35px;
+  }
+  100% {
+    bottom: 40px;
     opacity: 1;
   }
 }
@@ -226,10 +536,10 @@
 @keyframes tankBounce {
   0%,
   100% {
-    transform: scale(1.5) translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
   50% {
-    transform: scale(1.5) translateX(-50%) translateY(-2px);
+    transform: translateY(-3px);
   }
 }
 
@@ -247,38 +557,89 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-40px);
+    transform: translateX(-30px);
   }
 }
 
-@keyframes waveSmallFlag {
+@keyframes waveFlag {
   0%,
   100% {
     transform: rotateY(0deg) skew(0deg);
   }
+  25% {
+    transform: rotateY(10deg) skew(2deg);
+  }
   50% {
-    transform: rotateY(10deg) skew(5deg);
+    transform: rotateY(0deg) skew(-1deg);
+  }
+  75% {
+    transform: rotateY(-5deg) skew(1deg);
   }
 }
 
-@keyframes smoke {
+@keyframes exhaust {
   0% {
     transform: translateY(0) scale(1);
-    opacity: 0;
+    opacity: 0.9;
   }
-  10% {
-    opacity: 0.8;
+  50% {
+    opacity: 0.5;
   }
   100% {
-    transform: translateY(-30px) scale(3);
+    transform: translateY(-35px) scale(4);
     opacity: 0;
   }
 }
 
-/* Media queries for responsive tank */
+@keyframes suspensionWork {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(1.2);
+  }
+}
+
+/* Media queries for responsive tanks */
+@media (max-width: 1200px) {
+  .tank-843 {
+    left: 25%;
+    transform: scale(1) translateX(-50%);
+  }
+  .tank-390 {
+    left: 75%;
+    transform: scale(0.9) translateX(-50%);
+  }
+}
+
 @media (max-width: 768px) {
-  .tank {
-    transform: scale(0.8) translateX(-50%);
-    bottom: 80px;
+  .tank-843 {
+    left: 30%;
+    transform: scale(0.85) translateX(-50%);
+  }
+  .tank-390 {
+    left: 70%;
+    transform: scale(0.75) translateX(-50%);
+    animation-delay: 0.5s;
+  }
+
+  .tank .tank-hull .tank-hull-body .tank-number {
+    font-size: 20px; /* Slightly smaller for mobile but still readable */
+  }
+}
+
+@media (max-width: 480px) {
+  .tank-843 {
+    left: 35%;
+    transform: scale(0.65) translateX(-50%);
+  }
+  .tank-390 {
+    left: 65%;
+    transform: scale(0.55) translateX(-50%);
+    animation-delay: 0.8s;
+  }
+
+  .tank .tank-hull .tank-hull-body .tank-number {
+    font-size: 18px; /* Adjust for smallest screens */
   }
 }
