@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Noto Sans Vietnamese', 'Roboto', Arial, sans-serif;
+  font-family: 'Be Vietnam Pro', 'Roboto', Arial, sans-serif;
   color: #fff; /* Text color for better readability on red background */
   overflow-x: hidden;
   position: relative;
@@ -240,7 +240,6 @@ html {
   font-weight: bold;
   margin-bottom: 10px;
   color: #e30613; /* Đỏ tươi */
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
   letter-spacing: 1px;
 }
 
@@ -255,7 +254,6 @@ html {
   font-size: 1.5rem;
   font-weight: bold;
   color: #008fd5;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
   padding: 5px;
   min-width: 40px;
 }
@@ -269,42 +267,47 @@ html {
 }
 /* Em bé trong bộ đếm ngược */
 .countdown-embe {
-  width: 100px;
-  height: 100px;
+  width: 180px;
+  height: 180px;
   background-image: url('boy_with_flag.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 10px auto 0;
+  position: fixed;
+  bottom: 170px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 101;
   animation: embePulseSmooth 3s ease-in-out infinite;
-  will-change: transform; /* Performance optimization for smoother animations */
-  transform-origin: bottom center; /* Set transform origin to bottom center for more natural movement */
+  will-change: transform;
+  transform-origin: bottom center;
 }
 
 /* Animation mượt cho em bé trong đếm ngược */
 @keyframes embePulseSmooth {
   0% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateX(-50%) translateY(0) rotate(0deg);
   }
   25% {
-    transform: translateY(-3px) rotate(2deg);
+    transform: translateX(-50%) translateY(-5px) rotate(2deg);
   }
   50% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateX(-50%) translateY(0) rotate(0deg);
   }
   75% {
-    transform: translateY(-2px) rotate(-2deg);
+    transform: translateX(-50%) translateY(-3px) rotate(-2deg);
   }
   100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateX(-50%) translateY(0) rotate(0deg);
   }
 }
 
 /* Điều chỉnh em bé trong đếm ngược trên thiết bị nhỏ */
 @media screen and (max-width: 768px) {
   .countdown-embe {
-    width: 70px;
-    height: 70px;
+    width: 130px;
+    height: 130px;
+    bottom: 140px;
   }
 
   .countdown {
@@ -335,7 +338,7 @@ html {
 
 /* Base styles */
 body {
-  font-family: 'Noto Sans Vietnamese', 'Roboto', sans-serif;
+  font-family: 'Be Vietnam Pro', 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #ff0000; /* Màu đỏ quốc kỳ Việt Nam */
@@ -350,7 +353,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Noto Sans Vietnamese', sans-serif;
+  font-family: 'Be Vietnam Pro', sans-serif;
   font-weight: 700;
 }
 
@@ -380,13 +383,13 @@ h6 {
   padding: 15px;
   background-color: #fff; /* Semi-transparent background for better visibility */
   border-radius: 10px;
-  font-family: 'Noto Sans Vietnamese', sans-serif;
+  font-family: 'Be Vietnam Pro', sans-serif;
   font-weight: 700;
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
+  z-index: 2;
 }
 
 /* Button styles - adjusted for better contrast on red */

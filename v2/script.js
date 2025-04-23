@@ -134,14 +134,14 @@ function setupCountdown() {
   // Thêm em bé vào trong bộ đếm ngược
   const emBeElement = document.createElement('div');
   emBeElement.className = 'countdown-embe';
-  
+
   // Sử dụng requestAnimationFrame để tối ưu hóa hiệu suất
   const animateEmBe = () => {
     // Cải thiện hiệu suất render cho trình duyệt
     emBeElement.style.willChange = 'transform';
     countdownElement.appendChild(emBeElement);
   };
-  
+
   // Gọi hàm tối ưu animation cho em bé
   window.requestAnimationFrame(animateEmBe);
 
@@ -182,7 +182,9 @@ function setupCountdown() {
 
     // Lấy phần tử em bé hiện tại nếu có
     const currentEmBe = countdownElement.querySelector('.countdown-embe');
-    const emBeHtml = currentEmBe ? currentEmBe.outerHTML : '<div class="countdown-embe"></div>';
+    const emBeHtml = currentEmBe
+      ? currentEmBe.outerHTML
+      : '<div class="countdown-embe"></div>';
 
     // Cập nhật HTML với giữ emBeElement nhưng không tạo lại
     countdownElement.innerHTML = `
@@ -207,7 +209,7 @@ function setupCountdown() {
     }
     requestAnimationFrame(animateCountdown);
   }
-  
+
   // Khởi chạy animation loop
   requestAnimationFrame(animateCountdown);
 }
