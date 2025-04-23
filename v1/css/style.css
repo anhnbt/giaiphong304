@@ -117,19 +117,40 @@
   left: 10px;
   width: 15px;
   height: 15px;
-  background-color: #c10000;
+  border: 1px solid #ffdd00; /* Added yellow border */
   border-radius: 50%;
   z-index: 10;
+  overflow: hidden; /* Ensure content stays within the circle */
+  /* Split background - changed from left/right to top/bottom */
+  /* Star is now a separate element positioned on top */
+}
+.tank-turret .tank-insignia::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #cc0000; /* Red top half */
 }
 .tank-turret .tank-insignia::after {
   content: "";
   position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #2092b9; /* Blue bottom half - changed from green */
+}
+.tank-turret .tank-insignia .insignia-star {
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 60%;
   height: 60%;
   background-color: #ffdd00;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* Ensures star is on top of the background */
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
 .tank-turret .tank-antenna {
