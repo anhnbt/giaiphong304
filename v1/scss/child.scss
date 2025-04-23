@@ -3,14 +3,14 @@
   position: absolute;
   bottom: 99px;
   left: 45%; /* Position in the middle-left */
-  width: 100px;
-  height: 120px;
+  width: 300px; /* Increased from 100px to 300px (3x) */
+  height: 360px; /* Increased from 120px to 360px (3x) */
   z-index: 3;
   animation: bouncyRise 4s ease-out forwards,
     happyBounce 2s ease-in-out infinite;
 
   /* Perspective for 3D-like walk effect */
-  perspective: 400px;
+  perspective: 1200px; /* Increased from 400px to 1200px (3x) */
   transform-style: preserve-3d;
 
   /* Head - Bigger for chibi style */
@@ -19,23 +19,23 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px; /* Bigger head */
-    height: 50px; /* Bigger head */
+    width: 150px; /* Increased from 50px to 150px (3x) */
+    height: 150px; /* Increased from 50px to 150px (3x) */
     background: #ffdbac;
     border-radius: 50%;
     z-index: 2;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 9px rgba(0, 0, 0, 0.2); /* Increased shadow */
 
     /* Hair - Cute rounded style */
     &::before {
       content: '';
       position: absolute;
-      top: -8px;
+      top: -24px; /* Increased from -8px to -24px (3x) */
       left: 0;
-      width: 50px;
-      height: 25px;
+      width: 150px; /* Increased from 50px to 150px (3x) */
+      height: 75px; /* Increased from 25px to 75px (3x) */
       background: #000;
-      border-radius: 25px 25px 0 0;
+      border-radius: 75px 75px 0 0; /* Increased from 25px to 75px (3x) */
       /* More rounded, cute hair style */
       clip-path: polygon(
         0% 90%,
@@ -56,49 +56,49 @@
     &::after {
       content: '';
       position: absolute;
-      top: 5px;
-      left: -5px;
-      width: 60px;
-      height: 15px;
+      top: 15px; /* Increased from 5px to 15px (3x) */
+      left: -15px; /* Increased from -5px to -15px (3x) */
+      width: 180px; /* Increased from 60px to 180px (3x) */
+      height: 45px; /* Increased from 15px to 45px (3x) */
       background: #dd0000;
       z-index: 3;
       transform: rotate(-5deg);
-      border-radius: 5px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      border-radius: 15px; /* Increased from 5px to 15px (3x) */
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3); /* Increased shadow */
     }
   }
 
   /* Headband text */
   .headband-text {
     position: absolute;
-    top: 9px;
+    top: 27px; /* Increased from 9px to 27px (3x) */
     left: 50%;
     transform: translateX(-50%) rotate(-5deg);
     color: #ffdd00;
-    font-size: 6px;
+    font-size: 18px; /* Increased from 6px to 18px (3x) */
     font-weight: bold;
     white-space: nowrap;
     text-align: center;
     z-index: 4;
-    width: 50px;
-    text-shadow: 0 0 1px #000;
+    width: 150px; /* Increased from 50px to 150px (3x) */
+    text-shadow: 0 0 3px #000; /* Increased shadow */
   }
 
   /* Eyes with HTML structure */
   &-eyes {
     position: absolute;
-    top: 15px;
+    top: 45px; /* Increased from 15px to 45px (3x) */
     left: 50%;
-    width: 30px;
-    height: 10px;
+    width: 90px; /* Increased from 30px to 90px (3x) */
+    height: 30px; /* Increased from 10px to 30px (3x) */
     transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
   }
 
   &-eye {
-    width: 8px;
-    height: 8px;
+    width: 24px; /* Increased from 8px to 24px (3x) */
+    height: 24px; /* Increased from 8px to 24px (3x) */
     border-radius: 50%;
     background-color: #000;
     position: relative;
@@ -108,33 +108,33 @@
     &::after {
       content: '';
       position: absolute;
-      width: 3px;
-      height: 3px;
+      width: 9px; /* Increased from 3px to 9px (3x) */
+      height: 9px; /* Increased from 3px to 9px (3x) */
       background: #fff;
       border-radius: 50%;
-      top: 1px;
-      left: 1px;
+      top: 3px; /* Increased from 1px to 3px (3x) */
+      left: 3px; /* Increased from 1px to 3px (3x) */
     }
 
     &.left {
-      margin-right: 2px;
+      margin-right: 6px; /* Increased from 2px to 6px (3x) */
     }
 
     &.right {
-      margin-left: 2px;
+      margin-left: 6px; /* Increased from 2px to 6px (3x) */
     }
   }
 
   /* Cute mouth */
   &-mouth {
     position: absolute;
-    bottom: 15px;
+    bottom: 45px; /* Increased from 15px to 45px (3x) */
     left: 50%;
     transform: translateX(-50%);
-    width: 10px;
-    height: 5px;
+    width: 30px; /* Increased from 10px to 30px (3x) */
+    height: 15px; /* Increased from 5px to 15px (3x) */
     background: #ff6666;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 15px 15px; /* Increased from 5px to 15px (3x) */
     animation: mouthMove 2s ease-in-out infinite;
 
     /* Add smile curve */
@@ -142,53 +142,53 @@
       content: '';
       position: absolute;
       width: 100%;
-      height: 2px;
+      height: 6px; /* Increased from 2px to 6px (3x) */
       background: transparent;
       border-radius: 50%;
       top: 0;
       left: 0;
-      box-shadow: 0 1px 0 #ff3333;
+      box-shadow: 0 3px 0 #ff3333; /* Increased from 1px to 3px (3x) */
     }
   }
 
   /* Cute blush marks */
   &-blush {
     position: absolute;
-    width: 8px;
-    height: 4px;
+    width: 24px; /* Increased from 8px to 24px (3x) */
+    height: 12px; /* Increased from 4px to 12px (3x) */
     background: rgba(255, 153, 153, 0.6);
     border-radius: 50%;
-    top: 22px;
+    top: 66px; /* Increased from 22px to 66px (3x) */
 
     &.left {
-      left: 8px;
+      left: 24px; /* Increased from 8px to 24px (3x) */
     }
 
     &.right {
-      right: 8px;
+      right: 24px; /* Increased from 8px to 24px (3x) */
     }
   }
 
   /* Body - Beige t-shirt like image */
   &-body {
     position: absolute;
-    top: 45px;
+    top: 135px; /* Increased from 45px to 135px (3x) */
     left: 50%;
     transform: translateX(-50%);
-    width: 35px;
-    height: 35px;
+    width: 105px; /* Increased from 35px to 105px (3x) */
+    height: 105px; /* Increased from 35px to 105px (3x) */
     background: #f5e5c0; /* Beige colored shirt */
-    border-radius: 12px 12px 0 0;
+    border-radius: 36px 36px 0 0; /* Increased from 12px to 36px (3x) */
     z-index: 1;
 
     /* Tank illustration on shirt */
     &::before {
       content: '';
       position: absolute;
-      top: 5px;
+      top: 15px; /* Increased from 5px to 15px (3x) */
       left: 50%;
-      width: 28px;
-      height: 20px;
+      width: 84px; /* Increased from 28px to 84px (3x) */
+      height: 60px; /* Increased from 20px to 60px (3x) */
       transform: translateX(-50%);
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20"><rect fill="%23dd0000" x="4" y="10" width="20" height="8"/><rect fill="%23444" x="2" y="18" width="24" height="2"/><rect fill="%23666" x="18" y="2" width="5" height="8"/><circle fill="%23dd0000" cx="12" cy="6" r="4"/><rect fill="%23444" x="3" y="15" width="3" height="3"/><rect fill="%23444" x="8" y="15" width="3" height="3"/><rect fill="%23444" x="13" y="15" width="3" height="3"/><rect fill="%23444" x="18" y="15" width="3" height="3"/><rect fill="%23444" x="23" y="15" width="3" height="3"/></svg>')
         center/contain no-repeat;
@@ -198,12 +198,14 @@
   /* Arms - Modified for more natural posture */
   &-arm-left {
     position: absolute;
-    top: 50px;
-    left: calc(50% - 22px);
-    width: 10px;
-    height: 28px;
+    top: 150px; /* Increased from 50px to 150px (3x) */
+    left: calc(
+      50% - 66px
+    ); /* Increased from calc(50% - 22px) to calc(50% - 66px) (3x) */
+    width: 30px; /* Increased from 10px to 30px (3x) */
+    height: 84px; /* Increased from 28px to 84px (3x) */
     background: #ffdbac;
-    border-radius: 10px;
+    border-radius: 30px; /* Increased from 10px to 30px (3x) */
     z-index: 5;
     transform-origin: top center;
     transform: rotate(-5deg); /* Less extreme angle */
@@ -213,10 +215,10 @@
     &::after {
       content: '';
       position: absolute;
-      top: 12px;
+      top: 36px; /* Increased from 12px to 36px (3x) */
       left: 0;
       width: 100%;
-      height: 4px;
+      height: 12px; /* Increased from 4px to 12px (3x) */
       background: rgba(0, 0, 0, 0.1);
       border-radius: 50%;
     }
@@ -224,12 +226,14 @@
 
   &-arm-right {
     position: absolute;
-    top: 50px;
-    right: calc(50% - 22px);
-    width: 10px;
-    height: 28px;
+    top: 150px; /* Increased from 50px to 150px (3x) */
+    right: calc(
+      50% - 66px
+    ); /* Increased from calc(50% - 22px) to calc(50% - 66px) (3x) */
+    width: 30px; /* Increased from 10px to 30px (3x) */
+    height: 84px; /* Increased from 28px to 84px (3x) */
     background: #ffdbac;
-    border-radius: 10px;
+    border-radius: 30px; /* Increased from 10px to 30px (3x) */
     z-index: 6; /* Make sure it's above other elements */
     transform-origin: top center;
     transform: rotate(15deg);
@@ -238,10 +242,10 @@
     &::after {
       content: '';
       position: absolute;
-      top: 12px;
+      top: 36px; /* Increased from 12px to 36px (3x) */
       right: 0;
       width: 100%;
-      height: 4px;
+      height: 12px; /* Increased from 4px to 12px (3x) */
       background: rgba(0, 0, 0, 0.1);
       border-radius: 50%;
     }
@@ -250,36 +254,36 @@
   /* Improve flag positioning relative to arm */
   &-flag {
     position: absolute;
-    top: -5px; /* Positioned better relative to arm */
-    right: -8px;
+    top: -15px; /* Increased from -5px to -15px (3x) */
+    right: -24px; /* Increased from -8px to -24px (3x) */
     z-index: 7;
     transform: rotate(-10deg); /* Slight rotation to look more natural */
 
     &-pole {
       position: absolute;
-      width: 2px;
-      height: 45px;
+      width: 6px; /* Increased from 2px to 6px (3x) */
+      height: 135px; /* Increased from 45px to 135px (3x) */
       background: #a67c52;
     }
 
     &-cloth {
       position: absolute;
       top: 0;
-      left: 2px;
-      width: 30px;
-      height: 20px;
+      left: 6px; /* Increased from 2px to 6px (3x) */
+      width: 90px; /* Increased from 30px to 90px (3x) */
+      height: 60px; /* Increased from 20px to 60px (3x) */
       background: #dd0000;
       transform-origin: left center;
       animation: waveFlagChild 2s ease-in-out infinite;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3); /* Increased shadow */
 
       &::after {
         content: '';
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 10px;
-        height: 10px;
+        width: 30px; /* Increased from 10px to 30px (3x) */
+        height: 30px; /* Increased from 10px to 30px (3x) */
         background: #ffdd00;
         transform: translate(-50%, -50%);
         clip-path: polygon(
@@ -302,22 +306,26 @@
   &-leg-left,
   &-leg-right {
     position: absolute;
-    top: 80px;
-    width: 15px;
-    height: 30px;
+    top: 240px; /* Increased from 80px to 240px (3x) */
+    width: 45px; /* Increased from 15px to 45px (3x) */
+    height: 90px; /* Increased from 30px to 90px (3x) */
     background: #1a3c5b; /* Darker blue for jeans */
-    border-radius: 8px 8px 5px 5px;
+    border-radius: 24px 24px 15px 15px; /* Increased from 8px 8px 5px 5px (3x) */
     z-index: 1;
     transform-origin: top center;
   }
 
   &-leg-left {
-    left: calc(50% - 16px); /* Left leg position */
+    left: calc(
+      50% - 48px
+    ); /* Increased from calc(50% - 16px) to calc(50% - 48px) (3x) */
     animation: walkingLegLeft 1.2s linear infinite;
   }
 
   &-leg-right {
-    right: calc(50% - 16px); /* Right leg position */
+    right: calc(
+      50% - 48px
+    ); /* Increased from calc(50% - 16px) to calc(50% - 48px) (3x) */
     animation: walkingLegRight 1.2s linear infinite;
   }
 
@@ -325,53 +333,61 @@
   &-foot-left,
   &-foot-right {
     position: absolute;
-    width: 16px; /* Match width with legs */
-    height: 8px;
+    width: 48px; /* Increased from 16px to 48px (3x) */
+    height: 24px; /* Increased from 8px to 24px (3x) */
     background: #222;
-    border-radius: 10px 10px 5px 5px;
+    border-radius: 30px 30px 15px 15px; /* Increased from 10px 10px 5px 5px (3x) */
     z-index: 0;
     transform-origin: center top;
   }
 
   &-foot-left {
-    left: calc(50% - 16px); /* Match exactly with leg position */
+    left: calc(
+      50% - 48px
+    ); /* Increased from calc(50% - 16px) to calc(50% - 48px) (3x) */
     animation: walkingFootLeft 1.2s linear infinite;
   }
 
   &-foot-right {
-    right: calc(50% - 16px); /* Match exactly with leg position */
+    right: calc(
+      50% - 48px
+    ); /* Increased from calc(50% - 16px) to calc(50% - 48px) (3x) */
     animation: walkingFootRight 1.2s linear infinite;
   }
 }
 
-/* Change speech bubble text */
+/* Change speech bubble positioning to avoid overlap with character's head */
 .son::before {
-  content: 'Tự Do!';
+  content: 'Xe tăng đi đâu cho em theo với!';
   position: absolute;
-  top: -40px;
-  right: -50px; /* Adjusted position */
+  top: -150px; /* Moved further up (from -60px to -150px) to avoid overlapping */
+  right: -120px; /* Adjusted right position to better center above character */
   background: white;
   color: #ff0000;
-  padding: 8px 12px;
-  border-radius: 15px;
-  font-size: 12px;
+  padding: 24px 36px;
+  border-radius: 45px;
+  font-size: 28px; /* Slightly reduced from 36px to 28px to fit better */
   font-weight: bold;
   opacity: 0;
   animation: showSpeech 5s ease-in-out 2s infinite;
   pointer-events: none;
   z-index: 10;
+  max-width: 320px; /* Added max-width to control bubble size */
+  text-align: center; /* Center text for better appearance */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Added subtle shadow for depth */
 
-  /* Add a speech bubble tail */
+  /* Adjusted speech bubble tail positioning */
   &::after {
     content: '';
     position: absolute;
-    bottom: -8px;
-    left: 15px;
-    width: 15px;
-    height: 15px;
+    bottom: -24px;
+    left: 120px; /* Centered the tail more under the speech bubble */
+    width: 45px;
+    height: 45px;
     background: white;
     transform: rotate(45deg);
     z-index: -1;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1); /* Added shadow to match bubble */
   }
 }
 
@@ -509,12 +525,12 @@
 @keyframes mouthMove {
   0%,
   100% {
-    width: 10px;
-    height: 5px;
+    width: 30px; /* Increased from 10px to 30px (3x) */
+    height: 15px; /* Increased from 5px to 15px (3x) */
   }
   50% {
-    width: 12px;
-    height: 6px;
+    width: 36px; /* Increased from 12px to 36px (3x) */
+    height: 18px; /* Increased from 6px to 18px (3x) */
   }
 }
 
@@ -550,15 +566,15 @@
     transform: rotateX(0deg) translateZ(0);
   }
   25% {
-    transform: rotateX(25deg) translateZ(5px);
-    height: 28px;
+    transform: rotateX(25deg) translateZ(15px); /* Increased from translateZ(5px) to translateZ(15px) (3x) */
+    height: 84px; /* Increased from 28px to 84px (3x) */
   }
   50% {
     transform: rotateX(0deg) translateZ(0);
   }
   75% {
-    transform: rotateX(-15deg) translateZ(-3px);
-    height: 32px;
+    transform: rotateX(-15deg) translateZ(-9px); /* Increased from translateZ(-3px) to translateZ(-9px) (3x) */
+    height: 96px; /* Increased from 32px to 96px (3x) */
   }
 }
 
@@ -568,15 +584,15 @@
     transform: rotateX(0deg) translateZ(0);
   }
   25% {
-    transform: rotateX(-15deg) translateZ(-3px);
-    height: 32px;
+    transform: rotateX(-15deg) translateZ(-9px); /* Increased from translateZ(-3px) to translateZ(-9px) (3x) */
+    height: 96px; /* Increased from 32px to 96px (3x) */
   }
   50% {
     transform: rotateX(0deg) translateZ(0);
   }
   75% {
-    transform: rotateX(25deg) translateZ(5px);
-    height: 28px;
+    transform: rotateX(25deg) translateZ(15px); /* Increased from translateZ(5px) to translateZ(15px) (3x) */
+    height: 84px; /* Increased from 28px to 84px (3x) */
   }
 }
 
@@ -587,11 +603,11 @@
     bottom: 0;
   }
   25% {
-    bottom: 5px;
+    bottom: 15px; /* Increased from 5px to 15px (3x) */
     transform: rotateX(-25deg) scaleX(1.1);
   }
   75% {
-    bottom: -2px;
+    bottom: -6px; /* Increased from -2px to -6px (3x) */
     transform: rotateX(15deg) scaleX(0.9);
   }
 }
@@ -603,11 +619,11 @@
     bottom: 0;
   }
   25% {
-    bottom: -2px;
+    bottom: -6px; /* Increased from -2px to -6px (3x) */
     transform: rotateX(15deg) scaleX(0.9);
   }
   75% {
-    bottom: 5px;
+    bottom: 15px; /* Increased from 5px to 15px (3x) */
     transform: rotateX(-25deg) scaleX(1.1);
   }
 }
@@ -625,6 +641,8 @@
 /* Media queries */
 @media (max-width: 768px) {
   .son {
-    transform: scale(0.7);
+    transform: scale(
+      0.5
+    ); /* Adjusted from 0.7 - smaller on mobile due to larger base size */
   }
 }
