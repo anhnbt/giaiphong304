@@ -1,31 +1,38 @@
-# Giải Phóng 30/04
+# Vietnam Liberation Day Animation
 
-Dự án này được tạo ra để kỷ niệm ngày Giải phóng miền Nam, thống nhất đất nước 30/04. Đây là một hoạt cảnh mô phỏng xe tăng di chuyển, bắn pháo hoa và hiển thị các câu khẩu hiệu yêu nước.
+This project is a web animation celebrating Vietnam's Liberation Day (April 30th).
 
-## Demo
+## Color Palette
 
-Xem demo tại đây: [https://codingwithwanbi.com/giaiphong304/](https://codingwithwanbi.com/giaiphong304/)
+The project uses the following color palette:
 
-## Cấu trúc dự án
+### Yellow (Gold)
+- CMYK: C:0 M:0 Y:100 K:0
+- Hex: #FFD700
+- RGB: 255, 215, 0
 
-- **index.html**: Tệp HTML chính chứa cấu trúc của hoạt cảnh.
-- **css/style.css**: Tệp CSS định nghĩa giao diện và các hiệu ứng hoạt hình.
-- **js/script.js**: Tệp JavaScript điều khiển logic hoạt động của xe tăng, hiệu ứng bắn và hiển thị khẩu hiệu.
-- **images/background.webp**: Hình nền của hoạt cảnh.
-- **sounds/shoot.mp3**: Âm thanh bắn pháo.
+### Blue
+- CMYK: C:100 M:20 Y:0 K:0
+- Hex: #0096FF
+- RGB: 0, 150, 255
 
-## Hướng dẫn sử dụng
+### Red
+- CMYK: C:0 M:100 Y:100 K:0
+- Hex: #FF0000
+- RGB: 255, 0, 0
 
-1. Clone hoặc tải về dự án.
-2. Mở tệp `index.html` trong trình duyệt để xem hoạt cảnh.
+## Development
 
-## Công nghệ sử dụng
+To modify the styles:
 
-- **HTML5**: Xây dựng cấu trúc trang.
-- **CSS3**: Tạo hiệu ứng hoạt hình và giao diện.
-- **JavaScript**: Điều khiển logic và tương tác.
-- **Canvas Confetti**: Thư viện tạo hiệu ứng pháo hoa.
+1. Install dependencies: `npm install`
+2. Watch SCSS files for changes: `npm run sass:watch`
+3. Open `index.html` in a browser to view the animation
 
-## Đóng góp
+## Features
 
-Nếu bạn muốn đóng góp cho dự án, vui lòng tạo một pull request hoặc liên hệ với tôi qua email.
+- Animated tank with Vietnam flag
+- Simulated road
+- Child character with flag
+- Confetti effects
+- Patriotic quotes

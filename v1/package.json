@@ -1,0 +1,13 @@
+{
+  "name": "giaiphong304",
+  "version": "1.0.0",
+  "description": "Vietnam Liberation Day Animation",
+  "scripts": {
+    "sass": "sass scss/tank.scss css/tank.css",
+    "sass:watch": "sass --watch scss/style.scss css/style.css"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "sass": "^1.63.0"
+  }
+}

@@ -1,0 +1,260 @@
+/* Pure CSS Tank Component */
+.tank {
+  position: absolute;
+  left: -200px;
+  bottom: 100px;
+  width: 200px;
+  height: 110px;
+  z-index: 10;
+  animation: moveTank 15s linear infinite;
+
+  // Smoke effect for tank
+  &::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 80px;
+    width: 10px;
+    height: 10px;
+    background: rgba(200, 200, 200, 0.8);
+    border-radius: 50%;
+    opacity: 0;
+    animation: smoke 2s linear infinite;
+  }
+
+  &-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  // Tank Hull
+  &-hull {
+    position: absolute;
+    bottom: 25px;
+    width: 190px;
+    height: 45px;
+    background: #3a4542;
+    border-radius: 6px;
+    z-index: 3;
+
+    &-front {
+      position: absolute;
+      right: -20px;
+      top: 0;
+      width: 40px;
+      height: 45px;
+      background: #3a4542;
+      clip-path: polygon(0 0, 100% 30%, 100% 70%, 0 100%);
+    }
+
+    &-body {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-bottom: 2px solid #252e2a;
+    }
+  }
+
+  // Tank Turret
+  &-turret {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95px;
+    height: 35px;
+    background: #2a3330;
+    border-radius: 10px 10px 0 0;
+    z-index: 4;
+  }
+
+  &-gun {
+    position: absolute;
+    top: 15px;
+    right: -80px;
+    width: 100px;
+    height: 10px;
+    background: #2a3330;
+    border-radius: 5px;
+    z-index: 2;
+  }
+
+  // Tank Tracks
+  &-tracks {
+    position: absolute;
+    bottom: 0;
+    width: 190px;
+    height: 25px;
+    z-index: 2;
+  }
+
+  &-track {
+    &-left,
+    &-right {
+      position: absolute;
+      width: 100%;
+      height: 25px;
+      background: #232323;
+      border-radius: 12px;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 200%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: repeating-linear-gradient(
+          90deg,
+          #232323,
+          #232323 20px,
+          #333333 20px,
+          #333333 40px
+        );
+        animation: moveTrack 0.5s linear infinite;
+      }
+    }
+  }
+
+  &-wheels {
+    position: absolute;
+    bottom: 4px;
+    width: 100%;
+    height: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    box-sizing: border-box;
+
+    .wheel {
+      width: 15px;
+      height: 15px;
+      background: #111;
+      border-radius: 50%;
+      position: relative;
+      animation: rotateWheel 0.5s linear infinite;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 5px;
+        height: 5px;
+        background: #444;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  // Tank Flag
+  &-flag {
+    position: absolute;
+    top: -35px;
+    left: 100px;
+    z-index: 5;
+
+    .flag-pole {
+      position: absolute;
+      width: 4px;
+      height: 45px;
+      background: #888;
+    }
+
+    .flag-cloth {
+      position: absolute;
+      top: 0;
+      left: 4px;
+      width: 35px;
+      height: 20px;
+      background: #ff0000;
+      transform-origin: left center;
+      animation: waveSmallFlag 2s ease-in-out infinite;
+    }
+
+    .flag-star {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      background: #ffd700;
+      transform: translate(-50%, -50%);
+      clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+      );
+    }
+  }
+}
+
+/* Tank-related animations */
+@keyframes moveTank {
+  0% {
+    left: -200px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes rotateWheel {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveTrack {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-40px);
+  }
+}
+
+@keyframes waveSmallFlag {
+  0%,
+  100% {
+    transform: rotateY(0deg) skew(0deg);
+  }
+  50% {
+    transform: rotateY(10deg) skew(5deg);
+  }
+}
+
+@keyframes smoke {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-30px) scale(3);
+    opacity: 0;
+  }
+}
+
+/* Media queries for responsive tank */
+@media (max-width: 768px) {
+  .tank {
+    transform: scale(0.8);
+    bottom: 80px;
+  }
+}

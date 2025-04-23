@@ -7,32 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
   let shootCount = 0; // Biến đếm số lần bắn
   const maxShots = 3; // Số lần bắn tối đa
   let hasShot = false; // Trạng thái để kiểm tra xem đã bắn trong vòng lặp này chưa
-  let gateDestroyed = false; // Trạng thái cổng bị húc đổ
 
-  function showMemeText() {
-    const memeText = document.createElement('div');
-    memeText.textContent = 'Húc đổ cổng rồi!';
-    memeText.style.position = 'absolute';
-    memeText.style.bottom = '20%'; // Đặt cao hơn để nằm trên đứa bé
-    memeText.style.left = '50%';
-    memeText.style.transform = 'translate(-50%, -50%)';
-    memeText.style.color = '#FFD700';
-    memeText.style.fontSize = '24px';
-    memeText.style.fontWeight = 'bold';
-    memeText.style.textShadow = '2px 2px 2px #000';
-    document.body.appendChild(memeText);
-
-    setTimeout(() => {
-      memeText.remove();
-    }, 3000); // Hiển thị trong 3 giây
+  // Hide child initially
+  const child = document.querySelector('.child');
+  if (child) {
+    child.style.visibility = 'hidden';
+    child.style.opacity = '0';
   }
 
   function showChildEffect() {
-    const child = document.createElement('div');
-    child.classList.add('child'); // Thêm class để áp dụng CSS
-    document.body.appendChild(child);
+    if (!child) return;
 
-    child.style.left = `${TANK_X_POSITION - 150 / 2}px`; // Đồng bộ vị trí x với xe tăng
+    // Reset animation
+    child.style.animation = 'none';
+    child.offsetHeight; // Trigger reflow
+
+    // Reapply animation and show child
+    child.style.visibility = 'visible';
+    child.style.opacity = '1';
+    // child.style.animation = 'riseUp 3s ease-out forwards';
+
+    // Position the child near the tank
+    child.style.left = `${TANK_X_POSITION - 50}px`; // Center relative to tank
   }
 
   function updateTank() {
@@ -41,19 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
       tankPosition += tankSpeed;
       tank.style.left = `${tankPosition}px`;
     }
-    // Kiểm tra va chạm với cổng
-    const gate = document.querySelector('.gate');
-    const gateRect = gate.getBoundingClientRect();
-
-    if (
-      tankRect.right >= gateRect.left &&
-      tankRect.left <= gateRect.right &&
-      tankRect.bottom >= gateRect.top &&
-      !gateDestroyed
-    ) {
-      gate.classList.add('destroyed');
-      gateDestroyed = true;
-    }
 
     // Kiểm tra điều kiện bắn
     if (
@@ -61,14 +44,24 @@ document.addEventListener('DOMContentLoaded', () => {
       !hasShot &&
       tankPosition >= TANK_X_POSITION - tankRect.width / 2
     ) {
+      // Trigger tank shooting effect
+      const tankGun = document.querySelector('.tank-gun');
+      if (tankGun) {
+        tankGun.style.animation = 'none';
+        setTimeout(() => {
+          tankGun.style.animation = 'shootEffect 0.3s';
+        }, 10);
+      }
+
       showChildEffect();
-      showMemeText();
+
       confetti({
         particleCount: 100,
         spread: 70,
         origin: { x: 0.5, y: 0.5 },
-        colors: ['#FF0000', '#FFD700', '#FFFFFF'],
+        colors: ['#FF0000', '#FFD700', '#0096FF'], // Updated colors
       });
+
       shootCount++;
       hasShot = true;
 
@@ -78,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Tiếp tục cập nhật nếu chưa đạt số lần bắn tối đa
-    if (tankPosition < TANK_X_POSITION - tankRect.width / 2 || !gateDestroyed) {
+    if (tankPosition < TANK_X_POSITION - tankRect.width / 2) {
       requestAnimationFrame(updateTank);
     }
   }

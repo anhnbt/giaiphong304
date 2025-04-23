@@ -1,0 +1,60 @@
+/* Vietnam Flag Component */
+.flag {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 60px;
+  background: #ff0000;
+  animation: waveFlag 2s ease-in-out infinite;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: #ffd700;
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+  }
+}
+
+/* Flag wave animation */
+@keyframes waveFlag {
+  0%,
+  100% {
+    transform: translateX(-50%) skew(0deg);
+  }
+  50% {
+    transform: translateX(-50%) skew(10deg);
+  }
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .flag {
+    width: 80px;
+    height: 48px;
+
+    &::before {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

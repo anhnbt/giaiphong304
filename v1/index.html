@@ -11,15 +11,69 @@
 <body>
   <section class="scene">
     <div class="tank">
-      <img src="images/tank.png" alt="Xe tăng" class="tank-image">
+      <div class="tank-body">
+        <div class="tank-turret">
+          <div class="tank-gun"></div>
+        </div>
+        <div class="tank-hull">
+          <div class="tank-hull-front"></div>
+          <div class="tank-hull-body"></div>
+        </div>
+        <div class="tank-tracks">
+          <div class="tank-track-left"></div>
+          <div class="tank-track-right"></div>
+          <div class="tank-wheels">
+            <div class="wheel wheel-1"></div>
+            <div class="wheel wheel-2"></div>
+            <div class="wheel wheel-3"></div>
+            <div class="wheel wheel-4"></div>
+            <div class="wheel wheel-5"></div>
+            <div class="wheel wheel-6"></div>
+          </div>
+        </div>
+        <div class="tank-flag">
+          <div class="flag-pole"></div>
+          <div class="flag-cloth">
+            <div class="flag-star"></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="gate">
-      <img src="images/gate.png" alt="Xe tăng" class="tank-image">
-    </div>
+
     <div class="flag"></div>
     <div class="road"></div>
     <div class="quote"></div>
+
+    <!-- Enhanced Child Character Structure -->
+    <div class="child">
+      <div class="child-head">
+        <!-- New facial elements for better control -->
+        <div class="child-eyes">
+          <div class="child-eye left"></div>
+          <div class="child-eye right"></div>
+        </div>
+        <div class="child-mouth"></div>
+        <div class="child-blush left"></div>
+        <div class="child-blush right"></div>
+      </div>
+      <div class="child-body"></div>
+      <div class="child-arm-left"></div>
+      <div class="child-arm-right">
+        <!-- Enhanced flag structure -->
+        <div class="child-flag-holder">
+          <div class="child-flag-pole"></div>
+          <div class="child-flag">
+            <div class="child-flag-star"></div>
+          </div>
+        </div>
+      </div>
+      <div class="child-leg-left"></div>
+      <div class="child-leg-right"></div>
+      <div class="child-foot-left"></div>
+      <div class="child-foot-right"></div>
+    </div>
   </section>
+
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="js/script.js"></script>
 </body>
